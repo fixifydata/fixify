@@ -2,5 +2,11 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/services", "destination": "/services/" },
+    { "source": "/approach", "destination": "/approach/" },
+    { "source": "/about", "destination": "/about/" },
+    { "source": "/contact", "destination": "/contact/" }
+  ]
 }
