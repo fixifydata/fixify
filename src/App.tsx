@@ -53,9 +53,31 @@ function ArrowUpRight() { return <span className="arrow-icon" aria-hidden="true"
 function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) { return <div className={`eyebrow ${light ? 'eyebrow--light' : ''}`}><span className="eyebrow-dot" />{children}</div> }
 function SectionIntro({ eyebrow, light = false }: { eyebrow: string; light?: boolean }) { return <Eyebrow light={light}>{eyebrow}</Eyebrow> }
 
+const serviceMenu: LinkItem[] = [
+  { label: 'GA4 Implementation', href: '/ga4-implementation/' },
+  { label: 'GA4 Audits', href: '/ga4-audit/' },
+  { label: 'Google Tag Manager', href: '/google-tag-manager/' },
+  { label: 'Consent & Privacy Measurement', href: '/consent-mode-cmp/' },
+  { label: 'Server-Side Tagging', href: '/server-side-tagging/' },
+  { label: 'CRM & Offline Conversions', href: '/crm-offline-conversions/' },
+  { label: 'Measurement Strategy', href: '/measurement-strategy/' },
+  { label: 'BigQuery & BI', href: '/ga4-bigquery-bi/' },
+  { label: 'QA & Monitoring', href: '/measurement-qa-monitoring/' },
+]
+const solutionMenu: LinkItem[] = [
+  { label: 'B2B & Lead Generation', href: '/solutions/b2b-lead-generation/' },
+  { label: 'Ecommerce', href: '/solutions/ecommerce/' },
+  { label: 'SaaS & Subscription', href: '/solutions/saas-subscription/' },
+  { label: 'Agencies', href: '/solutions/agencies/' },
+  { label: 'Multi-brand & Multi-domain', href: '/solutions/multi-brand/' },
+]
+
 function Header() {
   const [open, setOpen] = useState(false)
-  return <header className="site-header"><div className="container header-inner"><a className="brand-lockup" href="/" aria-label="Fixify home"><img alt="Fixify" className="brand-logo" src="/assets/fixify-logo-transparent.png" /></a><button className="menu-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen((value) => !value)}><span>Menu</span><span className={`menu-icon ${open ? 'is-open' : ''}`}><i /><i /></span></button><nav id="main-navigation" className={`main-navigation ${open ? 'is-open' : ''}`} aria-label="Main navigation"><div className="nav-links">{primaryNav.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}</div><a className="button button--small button--nav" href="/contact/" onClick={() => setOpen(false)}>Book a measurement diagnostic <ArrowUpRight /></a></nav></div></header>
+  const [openMenu, setOpenMenu] = useState<'services' | 'solutions' | null>(null)
+  const closeMenus = () => { setOpen(false); setOpenMenu(null) }
+  const menu = (name: 'services' | 'solutions', label: string, href: string, items: LinkItem[]) => <div className={`nav-group ${openMenu === name ? 'is-open' : ''}`} onMouseEnter={() => setOpenMenu(name)} onMouseLeave={() => setOpenMenu(null)}><button className="nav-trigger" type="button" aria-expanded={openMenu === name} aria-controls={`nav-${name}`} onClick={() => setOpenMenu(openMenu === name ? null : name)}>{label}<span className="nav-chevron" aria-hidden="true">⌄</span></button><div id={`nav-${name}`} className="nav-dropdown" role="menu"> <div className="nav-dropdown__intro"><span>Explore</span><strong>{name === 'services' ? 'Measurement systems' : 'Solutions by business model'}</strong><a href={href} onClick={closeMenus}>View all <ArrowUpRight /></a></div><div className="nav-dropdown__links">{items.map((item) => <a href={item.href} key={item.href} role="menuitem" onClick={closeMenus}>{item.label}<ArrowUpRight /></a>)}</div></div></div>
+  return <header className="site-header"><div className="container header-inner"><a className="brand-lockup" href="/" aria-label="Fixify home"><img alt="Fixify" className="brand-logo" src="/assets/fixify-logo-transparent.png" /></a><button className="menu-toggle" type="button" aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen((value) => !value)}><span>Menu</span><span className={`menu-icon ${open ? 'is-open' : ''}`}><i /><i /></span></button><nav id="main-navigation" className={`main-navigation ${open ? 'is-open' : ''}`} aria-label="Main navigation"><div className="nav-links">{menu('services', 'Services', '/services/', serviceMenu)}{menu('solutions', 'Solutions', '/solutions/b2b-lead-generation/', solutionMenu)}<a href="/case-studies/" onClick={closeMenus}>Case Studies</a><a href="/approach/" onClick={closeMenus}>Approach</a><a href="/about/" onClick={closeMenus}>About</a></div><a className="button button--small button--nav" href="/contact/" onClick={closeMenus}>Book a measurement diagnostic <ArrowUpRight /></a></nav></div></header>
 }
 
 function Footer() {
