@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react'
 type Service = {
   number: string
   title: string
+  slug: string
   description: string
   details: string[]
   tag: string
@@ -21,50 +22,29 @@ const navItems = [
 ]
 
 const services: Service[] = [
-  {
-    number: '01',
-    title: 'GA4 Implementation & Audits',
-    description: 'Turn business questions into a governed GA4 property your marketing, sales and product teams can read the same way.',
-    details: ['Measurement plan, event taxonomy and naming rules', 'Lead-gen and ecommerce event architecture', 'Custom dimensions, metrics and audiences', 'CRM, Google Ads and warehouse connections', 'Backend-to-GA4 reconciliation and QA', 'Documentation your team can extend'],
-    tag: 'Foundation',
-  },
-  {
-    number: '02',
-    title: 'Google Tag Manager',
-    description: 'Create a tag-management system that is easier to debug, safer to release and ready for the next campaign or product change.',
-    details: ['Container architecture and workspace governance', 'Data layer requirements and developer guidance', 'Tags, triggers, variables and custom templates', 'Preview-mode debugging and release QA', 'Duplicate, stale and conflicting tag cleanup', 'Versioning, permissions and handover playbook'],
-    tag: 'Infrastructure',
-  },
-  {
-    number: '03',
-    title: 'Conversion Tracking',
-    description: 'Connect ad clicks to qualified leads, purchases and revenue with conversion definitions your growth team can trust.',
-    details: ['Google Ads enhanced conversions and value rules', 'Meta Pixel and server event coordination', 'LinkedIn, TikTok and other platform signals', 'Purchase, subscription and revenue parameters', 'Form, phone and CRM-qualified lead stages', 'Cross-platform deduplication and validation'],
-    tag: 'Outcomes',
-  },
-  {
-    number: '04',
-    title: 'Attribution & Marketing Measurement',
-    description: 'Replace channel arguments with a measurement framework that explains how campaigns contribute across the customer journey.',
-    details: ['UTM standards, campaign taxonomy and governance', 'First-touch, last-touch and assisted journey views', 'Attribution-window and data-driven model review', 'Cross-domain and cross-device journey mapping', 'Spend, pipeline and revenue measurement', 'Executive KPI definitions and decision cadence'],
-    tag: 'Clarity',
-  },
-  {
-    number: '05',
-    title: 'Server-Side Tracking',
-    description: 'Move the right signal closer to the source with a server-side architecture that improves resilience, control and data quality.',
-    details: ['Server-side GTM container and hosting architecture', 'Browser-to-server event mapping and event IDs', 'First-party domain and cookie strategy', 'Hashing, enrichment and platform authentication', 'Browser/server deduplication and match-quality QA', 'Consent-aware routing and operational handover'],
-    tag: 'Resilience',
-  },
-  {
-    number: '06',
-    title: 'Analytics & Reporting',
-    description: 'Give every audience the right view of performance, from daily operators to leadership deciding where to invest next.',
-    details: ['Looker Studio dashboards for channel and funnel teams', 'BigQuery-ready marketing data models', 'CRM, ad platform and offline-data integration', 'Metric definitions and source reconciliation', 'Anomaly alerts for spend, volume and conversion breaks', 'Decision-focused reporting and team enablement'],
-    tag: 'Decisions',
-  },
+  { number: '01', title: 'GA4 Implementation & Audits', slug: 'ga4', description: 'Turn business questions into a governed GA4 property your teams can read the same way.', details: ['Measurement plan, event taxonomy and naming rules', 'Lead-gen and ecommerce event architecture', 'Custom dimensions, metrics and audiences', 'CRM, Google Ads and warehouse connections', 'Backend-to-GA4 reconciliation and QA', 'Documentation your team can extend'], tag: 'Foundation' },
+  { number: '02', title: 'Google Tag Manager', slug: 'gtm', description: 'Create a tag-management system that is easier to debug, safer to release and ready to scale.', details: ['Container architecture and workspace governance', 'Data layer requirements and developer guidance', 'Tags, triggers, variables and custom templates', 'Preview-mode debugging and release QA', 'Duplicate, stale and conflicting tag cleanup', 'Versioning, permissions and handover playbook'], tag: 'Infrastructure' },
+  { number: '03', title: 'Conversion Tracking', slug: 'conversion-tracking', description: 'Connect ad clicks to qualified leads, purchases and revenue with definitions your growth team can trust.', details: ['Google Ads enhanced conversions and value rules', 'Meta Pixel and server event coordination', 'LinkedIn, TikTok and other platform signals', 'Purchase, subscription and revenue parameters', 'Form, phone and CRM-qualified lead stages', 'Cross-platform deduplication and validation'], tag: 'Outcomes' },
+  { number: '04', title: 'Attribution & Marketing Measurement', slug: 'attribution', description: 'Replace channel arguments with a framework that explains how campaigns contribute across the customer journey.', details: ['UTM standards, campaign taxonomy and governance', 'First-touch, last-touch and assisted journey views', 'Attribution-window and model review', 'Cross-domain and cross-device journey mapping', 'Spend, pipeline and revenue measurement', 'Executive KPI definitions and decision cadence'], tag: 'Clarity' },
+  { number: '05', title: 'Server-Side Tracking', slug: 'server-side-tracking', description: 'Move the right signal closer to the source with an architecture that improves resilience and control.', details: ['Server-side GTM container and hosting architecture', 'Browser-to-server event mapping and event IDs', 'First-party domain and cookie strategy', 'Hashing, enrichment and platform authentication', 'Browser/server deduplication and match-quality QA', 'Consent-aware routing and operational handover'], tag: 'Resilience' },
+  { number: '06', title: 'Analytics & Reporting', slug: 'analytics-reporting', description: 'Give every audience the right view of performance, from daily operators to leadership deciding where to invest.', details: ['Looker Studio dashboards for channel and funnel teams', 'BigQuery-ready marketing data models', 'CRM, ad platform and offline-data integration', 'Metric definitions and source reconciliation', 'Anomaly alerts for spend, volume and conversion breaks', 'Decision-focused reporting and enablement'], tag: 'Decisions' },
+  { number: '07', title: 'Web Conversions API', slug: 'web-conversions-api', description: 'Recover valuable web conversion signals with server delivery designed around consent and platform requirements.', details: ['Server event architecture and routing', 'Event IDs and browser/server deduplication', 'Hashing and parameter enrichment', 'Meta, Google, TikTok and Snap delivery', 'Platform diagnostics and match-quality review', 'Operational documentation and handover'], tag: 'Signals' },
+  { number: '08', title: 'App Conversions API', slug: 'app-conversions-api', description: 'Pair app events with dependable server delivery so important actions are not dependent on one client-side path.', details: ['App event taxonomy and mapping', 'SDK and server event coordination', 'Purchase and subscription value handling', 'Identity and event deduplication', 'Platform authentication and QA', 'Release documentation for product teams'], tag: 'App Growth' },
+  { number: '09', title: 'Offline & CRM Conversions', slug: 'offline-crm-conversions', description: 'Send qualified sales outcomes back into ad platforms so optimisation follows revenue, not just form fills.', details: ['CRM stage and revenue mapping', 'Offline event upload architecture', 'Lead identifiers and matching rules', 'Sales, call-centre and store conversion flows', 'Data freshness and failure monitoring', 'Campaign value validation'], tag: 'Revenue' },
+  { number: '10', title: 'Web Pixel Implementation', slug: 'web-pixel-implementation', description: 'Implement and QA the pixel layer across ad platforms without duplicate, conflicting or undocumented tags.', details: ['Pixel and tag inventory', 'Page, lead and ecommerce event setup', 'Parameter and value mapping', 'Cross-platform naming consistency', 'Browser testing and release QA', 'Clean documentation for future campaigns'], tag: 'Activation' },
+  { number: '11', title: 'Enhanced Conversions & Value Bidding', slug: 'enhanced-conversions', description: 'Improve Google Ads signal quality by connecting consent-aware first-party data and real business value.', details: ['Enhanced conversion configuration', 'Qualified lead and revenue value rules', 'CRM-to-Ads data mapping', 'Consent and hashing checks', 'Upload freshness and error review', 'Bidding readiness documentation'], tag: 'Google Ads' },
+  { number: '12', title: 'Google Tag Gateway', slug: 'google-tag-gateway', description: 'Strengthen first-party Google measurement with a domain and routing setup built to reduce avoidable signal loss.', details: ['First-party domain architecture', 'DNS and endpoint planning', 'Google tag routing configuration', 'Measurement blocker diagnostics', 'Consent-aware behavior checks', 'Maintenance and ownership handover'], tag: 'First Party' },
+  { number: '13', title: 'MMP & Mobile SDK Implementation', slug: 'mmp-mobile-sdk', description: 'Connect mobile acquisition, installs and in-app outcomes with an attribution setup your product and growth teams can use.', details: ['AppsFlyer, Adjust, Branch or Singular planning', 'SDK event taxonomy and implementation', 'Deep link and install attribution', 'SKAdNetwork value strategy', 'In-app purchase and revenue mapping', 'QA across release environments'], tag: 'Mobile' },
+  { number: '14', title: 'App Analytics & Product Measurement', slug: 'app-analytics', description: 'Make app behavior measurable from first open to activation, retention and revenue with a clear event framework.', details: ['Product event taxonomy', 'SDK configuration and naming rules', 'Funnels, cohorts and retention views', 'On-device and privacy-aware measurement', 'Crash and data-quality context', 'Analytics handover for product teams'], tag: 'Product' },
+  { number: '15', title: 'Web-to-App Attribution', slug: 'web-to-app-attribution', description: 'Connect web campaigns to app installs and purchases so the full path from click to customer is visible.', details: ['Deep-link architecture', 'Install referrer and campaign capture', 'Cross-platform identifier strategy', 'Web and app event reconciliation', 'Purchase and subscription attribution', 'Test matrix across devices and stores'], tag: 'Journey' },
+  { number: '16', title: 'TV & OTT Measurement', slug: 'tv-ott-measurement', description: 'Create a measurement layer for connected TV activity and understand how exposure contributes to action elsewhere.', details: ['TV app event planning', 'Exposure and response signal mapping', 'Cross-device identity considerations', 'Streaming platform integrations', 'Conversion lift and journey views', 'Privacy-aware reporting design'], tag: 'Emerging' },
+  { number: '17', title: 'BI & Data Integration', slug: 'bi-data-integration', description: 'Give leadership one dependable view of marketing performance by joining advertising, analytics, CRM and offline data.', details: ['Looker Studio, Power BI or Tableau dashboards', 'BigQuery and warehouse-ready models', 'Ad, GA4, CRM and offline data pipelines', 'Metric and attribution logic', 'Anomaly alerts and freshness checks', 'Source reconciliation and enablement'], tag: 'Data' },
+  { number: '18', title: 'Consent & Privacy Measurement', slug: 'consent-privacy', description: 'Make privacy choices explicit in the measurement architecture so compliance and useful reporting can work together.', details: ['CMP and GTM integration', 'Consent Mode v2 planning', 'Region-specific defaults and states', 'Tag behavior for granted and denied consent', 'Cross-browser and regional validation', 'Compliance-oriented documentation'], tag: 'Governance' },
+  { number: '19', title: 'Marketing Automation', slug: 'marketing-automation', description: 'Connect real customer behavior to timely journeys across marketing automation and CRM systems.', details: ['Lifecycle event and audience mapping', 'Lead routing and enrichment', 'Behavior-triggered journeys', 'CRM and analytics synchronization', 'Suppression and consent logic', 'Journey QA and reporting'], tag: 'Lifecycle' },
+  { number: '20', title: 'Experimentation & CRO', slug: 'experimentation-cro', description: 'Build a disciplined experimentation program for pages, funnels and forms that measures meaningful business movement.', details: ['Research and hypothesis backlog', 'Experiment event and goal setup', 'Funnel and form instrumentation', 'Statistical guardrails and QA', 'Audience and rollout rules', 'Learning documentation and next tests'], tag: 'Growth' },
+  { number: '21', title: 'CDP & Audience Infrastructure', slug: 'cdp-audience-infrastructure', description: 'Connect customer data sources, resolve identities and make trusted audiences available to the teams that need them.', details: ['Source and destination inventory', 'Identity resolution and profile rules', 'Event and audience taxonomy', 'CRM, analytics and activation connections', 'Match-rate and audience QA', 'Governance and team handover'], tag: 'Customer Data' },
+  { number: '22', title: 'Product Catalog & Feed Setup', slug: 'product-catalog-feeds', description: 'Make product and inventory data consistent across shopping, advertising and local discovery surfaces.', details: ['Catalog and feed source audit', 'Product attributes and taxonomy cleanup', 'Multi-market and currency handling', 'Availability, price and inventory rules', 'Platform diagnostics and feed QA', 'Maintenance workflow and documentation'], tag: 'Commerce' },
 ]
-
 const reasons: Reason[] = [
   { number: '01', title: 'Accuracy First', description: 'We focus on reliable data collection, validation and measurement quality.' },
   { number: '02', title: 'Solutions Built Around Your Business', description: 'No one-size-fits-all tracking setups. We design measurement solutions around your website, platforms and business goals.' },
@@ -125,7 +105,7 @@ function Footer() {
         <div className="footer-brand"><img src="/assets/fixify-logo-transparent.png" alt="Fixify" className="footer-logo" /><p>Tracking made right.<br />Decisions made smarter.</p></div>
         <div className="footer-column"><span className="footer-label">Explore</span><a href="/services/">Services</a><a href="/approach/">Approach</a><a href="/about/">About Fixify</a><a href="/contact/">Contact</a></div>
         <div className="footer-column footer-column--wide"><span className="footer-label">Services</span><a href="/services/#ga4">GA4 implementation & audits</a><a href="/services/#gtm">Google Tag Manager</a><a href="/services/#conversion-tracking">Conversion tracking</a><a href="/services/#attribution">Attribution & measurement</a></div>
-        <div className="footer-column"><span className="footer-label">Start a conversation</span><a className="footer-email" href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz <ArrowUpRight /></a><span className="footer-location">Built for teams that care<br />about getting it right.</span></div>
+        <div className="footer-column"><span className="footer-label">Start a conversation</span><a className="footer-email" href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz <ArrowUpRight /></a><a className="linkedin-link" href="https://www.linkedin.com/company/fixifydata/" target="_blank" rel="noreferrer" aria-label="Fixify on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 7.1A2.1 2.1 0 1 0 5.2 3a2.1 2.1 0 0 0 0 4.1ZM3.4 20.8h3.6V9.2H3.4v11.6ZM9.3 9.2v11.6h3.6v-5.7c0-1.5.3-3 2.2-3 1.8 0 1.8 1.7 1.8 3.1v5.6h3.6v-6.3c0-3.1-.7-5.5-4.5-5.5-1.8 0-3 .9-3.5 1.8h-.1V9.2H9.3Z" /></svg><span>Follow Fixify on LinkedIn</span></a><span className="footer-location">Built for teams that care<br />about getting it right.</span></div>
       </div>
       <div className="container footer-bottom"><span>© 2026 Fixify. All rights reserved.</span><span>Tracking made right <i /> Decisions made smarter</span></div>
     </footer>
@@ -214,8 +194,8 @@ function HomePage() {
 }
 
 function ServiceGrid({ preview = false }: { preview?: boolean }) {
-  const shownServices = preview ? services : services
-  return <div className="services-grid">{shownServices.map((service) => <article className="service-card" id={service.number === '01' ? 'ga4' : service.number === '02' ? 'gtm' : service.number === '03' ? 'conversion-tracking' : service.number === '04' ? 'attribution' : undefined} key={service.number}><div className="service-card__top"><span className="service-number">{service.number}</span><span className="service-tag">{service.tag}</span></div><h3>{service.title}</h3><p>{service.description}</p><ul>{service.details.map((detail) => <li key={detail}><span>+</span>{detail}</li>)}</ul><span className="service-card__corner" aria-hidden="true"><ArrowUpRight /></span></article>)}</div>
+  const shownServices = preview ? services.slice(0, 6) : services
+  return <div className="services-grid">{shownServices.map((service) => <article className="service-card" id={service.slug} key={service.number}><div className="service-card__top"><span className="service-number">{service.number}</span><span className="service-tag">{service.tag}</span></div><h3>{service.title}</h3><p>{service.description}</p><ul>{service.details.map((detail) => <li key={detail}><span>+</span>{detail}</li>)}</ul><a className="service-learn-more" href={`/services/#${service.slug}`}>Learn more <ArrowUpRight /></a><span className="service-card__corner" aria-hidden="true"><ArrowUpRight /></span></article>)}</div>
 }
 
 function ReasonList() {

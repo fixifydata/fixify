@@ -398,3 +398,15 @@ a:hover .arrow-icon { transform: translate(3px, -3px); }
   .page-hero h1 { font-size: 3.25rem; }
   .scene-3d { transform: scale(.76); }
 }
+
+.service-learn-more { align-items: center; color: var(--navy); display: inline-flex; font-size: .66rem; font-weight: 700; gap: 8px; letter-spacing: .09em; margin-top: 12px; text-transform: uppercase; }
+.service-learn-more .arrow-icon { color: var(--orange); font-size: 1rem; }
+.service-learn-more:hover { color: var(--orange); }
+.linkedin-link { align-items: center; color: var(--navy); display: inline-flex; font-size: .69rem !important; font-weight: 700 !important; gap: 8px; margin-top: 3px; }
+.linkedin-link svg { fill: currentColor; height: 17px; width: 17px; }
+.linkedin-link span { text-decoration: underline; text-decoration-color: rgba(255,158,10,.45); text-underline-offset: 4px; }
+.linkedin-link:hover { color: #0a66c2 !important; }
+@media (max-width: 760px) {
+  .service-learn-more { margin-top: 10px; }
+  .linkedin-link { margin-top: 2px; }
+}
