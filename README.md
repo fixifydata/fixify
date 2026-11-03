@@ -1,6 +1,6 @@
 # Fixify
 
-Marketing website for Fixify — Tracking Made Right. Decisions Made Smarter.
+Fixify is a specialist analytics engineering and measurement website positioned around one idea: **fix broken tracking and build measurement people can trust**. The site connects GA4, Google Tag Manager, consent, server-side collection, CRM outcomes, revenue reconciliation, BigQuery, BI and reporting instead of presenting a flat catalogue of tools.
 
 ## Local development
 
@@ -9,30 +9,30 @@ pnpm install
 pnpm dev
 ```
 
-The site is available at `/`, `/services/`, `/approach/`, `/about/`, `/contact/`, and the category routes under `/services/`.
+The site uses a React/Vite frontend with static HTML entrypoints for the homepage, the Services hub, ten high-intent service pages, five solution pages, Case Studies, Guides, Glossary, Approach, About and Contact. Existing platform category URLs under `/services/` remain valid and lead visitors back to the pillar-led architecture.
 
-## Service architecture
+## Information architecture
 
-The Services area is organized as a category hub with dedicated, crawlable detail pages for Analytics, Paid Media, CDP, Server-Side, Reporting, Tag Management, Ecommerce, App Tracking, and Mobile Tracking. Each category page explains the implementation scope and platform-specific work rather than acting as a logo-only directory.
+The main Services experience is organized into five pillars: **Measure**, **Govern**, **Protect**, **Connect** and **Decide**. The dedicated landing pages are `/ga4-implementation/`, `/ga4-audit/`, `/google-tag-manager/`, `/tracking-fix/`, `/consent-mode-cmp/`, `/server-side-tagging/`, `/crm-offline-conversions/`, `/measurement-strategy/`, `/ga4-bigquery-bi/` and `/measurement-qa-monitoring/`.
 
-Platform coverage includes Google Analytics 4, Amplitude, Mixpanel, Adobe Analytics, Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, Segment, RudderStack, mParticle, Tealium, Meta Conversions API, Google Enhanced Conversions, TikTok Events API, LinkedIn Conversions API, Looker Studio, Power BI, Tableau, BigQuery, Google Tag Manager, Adobe Experience Platform Launch, Tealium iQ, Server-Side GTM, Shopify, WooCommerce, Wix, Magento/Adobe Commerce, Firebase, AppsFlyer, Adjust, and Branch. Reusable brand marks are stored locally under `public/assets/brands`; platforms without an appropriate reusable SVG use a restrained text monogram instead of a broken remote image.
+Solutions cover `/solutions/b2b-lead-generation/`, `/solutions/ecommerce/`, `/solutions/saas-subscription/`, `/solutions/agencies/` and `/solutions/multi-brand/`. `/case-studies/` provides an evidence-first case-study structure without invented metrics. `/guides/` and `/glossary/` provide practical search-focused content entry points, with individual generated resource routes for the initial guide and glossary set.
 
-The original 22-service implementation catalog remains below the category hub on `/services/`, with an anchor and `Learn more` path for each offering.
-
-## Production build
+## Build and deployment
 
 ```bash
 pnpm build
 ```
 
-The Vercel project can be connected directly to this repository. Vercel will use the `pnpm build` command and publish the `dist` directory.
+The build first generates crawlable HTML for the dedicated landing pages, cleans `dist`, runs Vite, and then generates robots and sitemap files. Vercel should use the repository’s `pnpm build` command and publish `dist`.
 
-## SEO configuration
+Set `VITE_SITE_URL` in Vercel to the final public origin, for example `https://www.fixifydata.xyz`. When present, the build emits absolute canonical URLs, `og:url`, `og:image`, `sitemap.xml` and a sitemap reference in `robots.txt`. Submit the sitemap in Google Search Console after deployment. The implementation improves crawlability and intent coverage but cannot honestly guarantee a top Google ranking; rankings also depend on indexing, page speed, authoritative links, competition and continued original proof-led content.
 
-The project builds each page as a static HTML entrypoint with route-specific titles, descriptions, keywords, Open Graph metadata, Twitter metadata, JSON-LD, and meaningful no-JavaScript body content. The services page contains ItemList structured data for the 22 implementation offerings, and every category page has its own `Service` structured data and route-specific metadata. To emit absolute canonical URLs, `og:url`, `og:image`, `sitemap.xml`, and a sitemap reference in `robots.txt`, set the Vercel environment variable `VITE_SITE_URL` to the final public origin, for example `https://www.example.com`.
+## Lead qualification and measurement
 
-The implementation is designed to improve search discoverability, but no site can honestly guarantee a top Google position. Final rankings also depend on the live domain, indexing, page speed, Search Console configuration, authoritative backlinks, competition, local relevance, and ongoing original content. Submit the sitemap in Google Search Console after deployment and keep the public category pages updated with useful case studies and proof.
+The Contact page is a qualification flow with name, work email, company, website/app URL, requested help, current tools, main problem, timeline, optional budget and consent to contact. Submission opens a pre-addressed email to `admin@fixifydata.xyz`; no private backend or Google Sheet connector is assumed. The supplied Google Sheet is not connected because Workspace authorization was declined in the session.
 
-## Social and lead form
+The frontend initializes a `window.dataLayer` and pushes lightweight events for `cta_click`, `contact_form_start`, `contact_form_submit`, `contact_form_error`, `email_click` and `outbound_click`, including `page_path`, CTA labels and destination URLs. A future GTM container can consume these events without adding a second tracking system.
 
-The footer includes a LinkedIn icon linking to [Fixify Data on LinkedIn](https://www.linkedin.com/company/fixifydata/). The contact page includes validated name, work email, company, service, and context fields. Submission opens a pre-addressed, ready-to-send email to `admin@fixifydata.xyz`. The Google Workspace connector was not authorized in the session, so the supplied Google Sheet is not currently connected; enabling that connector is required before a secure Sheet-backed submission endpoint can be created.
+## Quality boundaries
+
+Copy uses evidence-based language such as validated implementation, documented assumptions, reconciled outcomes and improved data quality. It does not claim perfect attribution, guaranteed ROAS, universal compliance, zero data loss or guaranteed revenue growth. Technical implementation, legal/privacy responsibility, infrastructure assumptions, data ownership and measurement limitations are described separately.

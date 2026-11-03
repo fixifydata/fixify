@@ -6,7 +6,7 @@
   "packageManager": "pnpm@11.0.0",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build && node scripts/generate-seo.mjs",
+    "build": "node scripts/generate-pages.mjs && rm -rf dist && vite build && node scripts/generate-seo.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "typescript": "latest"
   },
   "devDependencies": {
+    "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest"
   }

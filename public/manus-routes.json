@@ -1,1 +1,196 @@
-{"routes":[{"path":"/","title":"Fixify | Tracking Made Right"},{"path":"/services/","title":"Fixify Services | Measurement & Growth Analytics"},{"path":"/services/analytics/","title":"Fixify Analytics Services | Implementation & Measurement"},{"path":"/services/paid-media/","title":"Fixify Paid Media Services | Implementation & Measurement"},{"path":"/services/cdp/","title":"Fixify CDP Services | Implementation & Measurement"},{"path":"/services/server-side/","title":"Fixify Server-Side Services | Implementation & Measurement"},{"path":"/services/reporting/","title":"Fixify Reporting Services | Implementation & Measurement"},{"path":"/services/tag-management/","title":"Fixify Tag Management Services | Implementation & Measurement"},{"path":"/services/ecommerce/","title":"Fixify Ecommerce Services | Implementation & Measurement"},{"path":"/services/app-tracking/","title":"Fixify App Tracking Services | Implementation & Measurement"},{"path":"/services/mobile-tracking/","title":"Fixify Mobile Tracking Services | Implementation & Measurement"},{"path":"/approach/","title":"Our Approach | Practical Marketing Measurement | Fixify"},{"path":"/about/","title":"About Fixify | Measurement Built Around Your Business"},{"path":"/contact/","title":"Contact Fixify | Book a Free Measurement Consultation"}]}
+{
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/services/",
+      "title": "Services"
+    },
+    {
+      "path": "/approach/",
+      "title": "Approach"
+    },
+    {
+      "path": "/about/",
+      "title": "About Fixify"
+    },
+    {
+      "path": "/contact/",
+      "title": "Contact"
+    },
+    {
+      "path": "/case-studies/",
+      "title": "Case Studies"
+    },
+    {
+      "path": "/guides/",
+      "title": "Guides"
+    },
+    {
+      "path": "/glossary/",
+      "title": "Glossary"
+    },
+    {
+      "path": "/ga4-implementation/",
+      "title": "Ga4 Implementation"
+    },
+    {
+      "path": "/ga4-audit/",
+      "title": "Ga4 Audit"
+    },
+    {
+      "path": "/google-tag-manager/",
+      "title": "Google Tag Manager"
+    },
+    {
+      "path": "/tracking-fix/",
+      "title": "Tracking Fix"
+    },
+    {
+      "path": "/consent-mode-cmp/",
+      "title": "Consent Mode Cmp"
+    },
+    {
+      "path": "/server-side-tagging/",
+      "title": "Server Side Tagging"
+    },
+    {
+      "path": "/crm-offline-conversions/",
+      "title": "Crm Offline Conversions"
+    },
+    {
+      "path": "/measurement-strategy/",
+      "title": "Measurement Strategy"
+    },
+    {
+      "path": "/ga4-bigquery-bi/",
+      "title": "Ga4 Bigquery Bi"
+    },
+    {
+      "path": "/measurement-qa-monitoring/",
+      "title": "Measurement Qa Monitoring"
+    },
+    {
+      "path": "/solutions/b2b-lead-generation/",
+      "title": "B2B Lead Generation"
+    },
+    {
+      "path": "/solutions/ecommerce/",
+      "title": "Ecommerce"
+    },
+    {
+      "path": "/solutions/saas-subscription/",
+      "title": "Saas Subscription"
+    },
+    {
+      "path": "/solutions/agencies/",
+      "title": "Agencies"
+    },
+    {
+      "path": "/solutions/multi-brand/",
+      "title": "Multi Brand"
+    },
+    {
+      "path": "/services/analytics/",
+      "title": "Analytics"
+    },
+    {
+      "path": "/services/paid-media/",
+      "title": "Paid Media"
+    },
+    {
+      "path": "/services/cdp/",
+      "title": "Cdp"
+    },
+    {
+      "path": "/services/server-side/",
+      "title": "Server Side"
+    },
+    {
+      "path": "/services/reporting/",
+      "title": "Reporting"
+    },
+    {
+      "path": "/services/tag-management/",
+      "title": "Tag Management"
+    },
+    {
+      "path": "/services/ecommerce/",
+      "title": "Ecommerce"
+    },
+    {
+      "path": "/services/app-tracking/",
+      "title": "App Tracking"
+    },
+    {
+      "path": "/services/mobile-tracking/",
+      "title": "Mobile Tracking"
+    },
+    {
+      "path": "/guides/ga4-implementation-guide/",
+      "title": "Ga4 Implementation Guide"
+    },
+    {
+      "path": "/guides/ga4-audit-checklist/",
+      "title": "Ga4 Audit Checklist"
+    },
+    {
+      "path": "/guides/google-tag-manager-audit/",
+      "title": "Google Tag Manager Audit"
+    },
+    {
+      "path": "/guides/how-to-fix-duplicate-ga4-conversions/",
+      "title": "How To Fix Duplicate Ga4 Conversions"
+    },
+    {
+      "path": "/guides/why-ga4-and-google-ads-conversion-numbers-do-not-match/",
+      "title": "Why Ga4 And Google Ads Conversion Numbers Do Not Match"
+    },
+    {
+      "path": "/guides/server-side-gtm-when-you-need-it/",
+      "title": "Server Side Gtm When You Need It"
+    },
+    {
+      "path": "/guides/consent-mode-and-server-side-tagging/",
+      "title": "Consent Mode And Server Side Tagging"
+    },
+    {
+      "path": "/guides/crm-offline-conversions-from-lead-to-revenue/",
+      "title": "Crm Offline Conversions From Lead To Revenue"
+    },
+    {
+      "path": "/glossary/what-is-a-datalayer/",
+      "title": "What Is A Datalayer"
+    },
+    {
+      "path": "/glossary/what-is-an-event-parameter-in-ga4/",
+      "title": "What Is An Event Parameter In Ga4"
+    },
+    {
+      "path": "/glossary/what-is-event-deduplication/",
+      "title": "What Is Event Deduplication"
+    },
+    {
+      "path": "/glossary/what-is-a-consent-signal/",
+      "title": "What Is A Consent Signal"
+    },
+    {
+      "path": "/glossary/what-is-a-gclid/",
+      "title": "What Is A Gclid"
+    },
+    {
+      "path": "/glossary/what-is-measurement-protocol/",
+      "title": "What Is Measurement Protocol"
+    },
+    {
+      "path": "/glossary/what-is-a-server-container/",
+      "title": "What Is A Server Container"
+    },
+    {
+      "path": "/glossary/what-is-a-crm-lifecycle-stage/",
+      "title": "What Is A Crm Lifecycle Stage"
+    }
+  ]
+}
