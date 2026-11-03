@@ -45,6 +45,115 @@ const services: Service[] = [
   { number: '21', title: 'CDP & Audience Infrastructure', slug: 'cdp-audience-infrastructure', description: 'Connect customer data sources, resolve identities and make trusted audiences available to the teams that need them.', details: ['Source and destination inventory', 'Identity resolution and profile rules', 'Event and audience taxonomy', 'CRM, analytics and activation connections', 'Match-rate and audience QA', 'Governance and team handover'], tag: 'Customer Data' },
   { number: '22', title: 'Product Catalog & Feed Setup', slug: 'product-catalog-feeds', description: 'Make product and inventory data consistent across shopping, advertising and local discovery surfaces.', details: ['Catalog and feed source audit', 'Product attributes and taxonomy cleanup', 'Multi-market and currency handling', 'Availability, price and inventory rules', 'Platform diagnostics and feed QA', 'Maintenance workflow and documentation'], tag: 'Commerce' },
 ]
+type Platform = {
+  name: string
+  icon: string
+  summary: string
+  scope: string[]
+}
+
+type ServiceCategory = {
+  slug: string
+  number: string
+  title: string
+  eyebrow: string
+  description: string
+  platforms: Platform[]
+}
+
+const serviceCategories: ServiceCategory[] = [
+  {
+    slug: 'analytics', number: '01', title: 'Analytics', eyebrow: 'Understand the journey',
+    description: 'Product and web analytics implementations that turn behavior into a shared measurement language.',
+    platforms: [
+      { name: 'Google Analytics 4', icon: 'googleanalytics', summary: 'Event-led web measurement for acquisition, engagement and ecommerce.', scope: ['Measurement plans and event taxonomy', 'Enhanced ecommerce and custom dimensions', 'Audiences, conversions and cross-domain journeys'] },
+      { name: 'Amplitude', icon: '', summary: 'Product analytics for funnels, cohorts, retention and activation.', scope: ['Event governance and identity planning', 'Funnel, cohort and retention instrumentation', 'Experiment and product KPI alignment'] },
+      { name: 'Mixpanel', icon: 'mixpanel', summary: 'Behavioral analytics that helps product teams see where users get value.', scope: ['Event schema and user profiles', 'Activation, retention and conversion reports', 'Data quality checks across product releases'] },
+      { name: 'Adobe Analytics', icon: 'adobe', summary: 'Enterprise analytics architecture for complex journeys and reporting needs.', scope: ['Suite and report-suite planning', 'eVar, prop and event governance', 'Implementation QA and analyst handover'] },
+    ],
+  },
+  {
+    slug: 'paid-media', number: '02', title: 'Paid Media', eyebrow: 'Connect spend to outcomes',
+    description: 'Platform-ready conversion signals and campaign governance for teams investing across search, social and B2B media.',
+    platforms: [
+      { name: 'Google Ads', icon: 'googleads', summary: 'Search, video and performance campaigns tied to qualified outcomes.', scope: ['Conversion actions and enhanced conversions', 'Offline lead and revenue imports', 'Value rules, audiences and attribution checks'] },
+      { name: 'Meta Ads', icon: 'meta', summary: 'Browser and server signals for lead, purchase and lifecycle campaigns.', scope: ['Pixel and Conversions API architecture', 'Event matching and deduplication', 'Lead quality and value feedback loops'] },
+      { name: 'LinkedIn Ads', icon: 'linkedin', summary: 'B2B campaign measurement that follows leads from form to pipeline.', scope: ['Insight Tag and conversion setup', 'Lead-gen form and CRM mapping', 'Pipeline-stage reporting and validation'] },
+      { name: 'TikTok Ads', icon: 'tiktok', summary: 'Full-funnel signals for creative-led acquisition and ecommerce.', scope: ['Pixel and Events API implementation', 'Event parameters and value mapping', 'Purchase and lead QA across devices'] },
+    ],
+  },
+  {
+    slug: 'cdp', number: '03', title: 'CDP', eyebrow: 'Make customer data usable',
+    description: 'Source, unify and activate customer data without losing governance, consent or a clear ownership model.',
+    platforms: [
+      { name: 'Segment', icon: '', summary: 'A governed collection layer for product, customer and marketing events.', scope: ['Tracking plans and source connections', 'Identity resolution and destinations', 'Protocol validation and ownership handover'] },
+      { name: 'RudderStack', icon: '', summary: 'Warehouse-first event collection and activation for technical teams.', scope: ['SDK and server event routing', 'Warehouse and destination schemas', 'Event quality, retries and monitoring'] },
+      { name: 'mParticle', icon: '', summary: 'Audience and data infrastructure for complex app and multi-channel journeys.', scope: ['Event and audience taxonomy', 'Identity and profile strategy', 'Activation destinations and match-rate QA'] },
+      { name: 'Tealium AudienceStream', icon: '', summary: 'Real-time audience building with governance across marketing systems.', scope: ['Profile enrichment and attributes', 'Audience rules and action triggers', 'Consent-aware activation workflows'] },
+    ],
+  },
+  {
+    slug: 'server-side', number: '04', title: 'Server-Side', eyebrow: 'Build resilient signals',
+    description: 'Server-side and first-party delivery for platforms that need cleaner, more durable conversion data.',
+    platforms: [
+      { name: 'Meta Conversions API', icon: 'meta', summary: 'Server-side Meta events enriched with reliable identifiers and values.', scope: ['Event mapping and event_id deduplication', 'Hashing, enrichment and match quality', 'Diagnostics and browser/server reconciliation'] },
+      { name: 'Google Enhanced Conversions', icon: 'googleads', summary: 'Consent-aware first-party data that improves Google Ads conversion quality.', scope: ['Enhanced conversions and lead stages', 'Hashing and consent-state validation', 'Offline values and freshness checks'] },
+      { name: 'TikTok Events API', icon: 'tiktok', summary: 'Server delivery for TikTok campaigns where browser signals are incomplete.', scope: ['Event and parameter mapping', 'API authentication and deduplication', 'Purchase and lead testing across environments'] },
+      { name: 'LinkedIn Conversions API', icon: 'linkedin', summary: 'More dependable B2B conversion signals from CRM and server events.', scope: ['Offline and server event design', 'Lead and pipeline stage mapping', 'Match and delivery validation'] },
+    ],
+  },
+  {
+    slug: 'reporting', number: '05', title: 'Reporting', eyebrow: 'Turn data into decisions',
+    description: 'Reporting systems that give operators, marketers and leadership one clear view of performance.',
+    platforms: [
+      { name: 'Looker Studio', icon: 'looker', summary: 'Accessible dashboards for channel, funnel and leadership reporting.', scope: ['Metric definitions and source mapping', 'Interactive dashboards and filters', 'Refresh, ownership and annotation workflows'] },
+      { name: 'Power BI', icon: '', summary: 'Business intelligence models for teams that need governed analysis at scale.', scope: ['Semantic model and KPI design', 'Marketing and CRM data connections', 'Permissions, refreshes and adoption handover'] },
+      { name: 'Tableau', icon: 'tableau', summary: 'Flexible visual analysis for complex performance and customer questions.', scope: ['Dashboard information architecture', 'Calculated fields and source reconciliation', 'Performance tuning and analyst enablement'] },
+      { name: 'BigQuery', icon: 'googlebigquery', summary: 'Warehouse foundations for joining advertising, analytics and offline truth.', scope: ['Dataset and table architecture', 'Transformation and freshness rules', 'Analytics-ready models for reporting tools'] },
+    ],
+  },
+  {
+    slug: 'tag-management', number: '06', title: 'Tag Management', eyebrow: 'Keep the stack orderly',
+    description: 'Tag, trigger and data-layer systems that remain understandable as websites, campaigns and teams grow.',
+    platforms: [
+      { name: 'Google Tag Manager', icon: 'googletagmanager', summary: 'A maintainable workspace for web tags, data layers and release governance.', scope: ['Container architecture and permissions', 'Tags, triggers, variables and templates', 'Preview QA, versioning and cleanup'] },
+      { name: 'Adobe Experience Platform Launch', icon: 'adobe', summary: 'Enterprise tag management for Adobe-led digital experiences.', scope: ['Property and data-element architecture', 'Rules, extensions and environment releases', 'Analytics and Experience Cloud validation'] },
+      { name: 'Tealium iQ', icon: '', summary: 'Vendor-neutral tag orchestration with governance and consent controls.', scope: ['Load rules and extension design', 'Data-layer normalization', 'Vendor audit, testing and handover'] },
+      { name: 'Server-Side GTM', icon: 'googletagmanager', summary: 'A server container for first-party routing, enrichment and platform delivery.', scope: ['Container and hosting architecture', 'Clients, tags, transformations and auth', 'Dedupe, consent and observability'] },
+    ],
+  },
+  {
+    slug: 'ecommerce', number: '07', title: 'Ecommerce', eyebrow: 'Measure every order',
+    description: 'Platform-aware ecommerce measurement for product views, carts, checkouts, purchases and customer value.',
+    platforms: [
+      { name: 'Shopify', icon: 'shopify', summary: 'Reliable storefront and checkout signals for growth teams.', scope: ['Product, cart, checkout and purchase events', 'Customer privacy and consent-aware tracking', 'Ads, GA4 and server-side integrations'] },
+      { name: 'WordPress & WooCommerce', icon: 'woocommerce', summary: 'Flexible measurement for content-led and commerce-led WordPress sites.', scope: ['Plugin and data-layer audit', 'Product, order and refund tracking', 'GTM, GA4 and paid-media validation'] },
+      { name: 'Wix', icon: 'wix', summary: 'Clean conversion and ecommerce signals for fast-moving Wix businesses.', scope: ['Site and checkout event planning', 'Lead, product and purchase tracking', 'Platform and campaign QA'] },
+      { name: 'Magento / Adobe Commerce', icon: 'magento', summary: 'Enterprise ecommerce measurement for catalogs, stores and complex orders.', scope: ['Catalog and order-state mapping', 'Multi-store and currency handling', 'Backend reconciliation and release testing'] },
+    ],
+  },
+  {
+    slug: 'app-tracking', number: '08', title: 'App Tracking', eyebrow: 'Understand product behavior',
+    description: 'Product analytics for activation, engagement, retention and in-app revenue across the moments that matter.',
+    platforms: [
+      { name: 'Firebase Analytics', icon: 'firebase', summary: 'Native app analytics for events, audiences, funnels and product health.', scope: ['Event taxonomy and SDK setup', 'Audiences, funnels and retention', 'BigQuery export and release QA'] },
+      { name: 'Amplitude', icon: '', summary: 'Product analytics for activation, feature adoption and retention decisions.', scope: ['Event governance and identity planning', 'Funnel, cohort and retention instrumentation', 'Experiment and product KPI alignment'] },
+      { name: 'Mixpanel', icon: 'mixpanel', summary: 'Behavioral analytics that helps product teams see where users get value.', scope: ['Event schema and user profiles', 'Activation, retention and conversion reports', 'Data quality checks across product releases'] },
+      { name: 'Adobe Analytics', icon: 'adobe', summary: 'Enterprise app and digital experience analytics for complex product ecosystems.', scope: ['Suite and report-suite planning', 'Event governance and journey analysis', 'Implementation QA and analyst handover'] },
+    ],
+  },
+  {
+    slug: 'mobile-tracking', number: '09', title: 'Mobile Tracking', eyebrow: 'Connect install to value',
+    description: 'Mobile attribution and lifecycle measurement from acquisition and install through deep links, retention and revenue.',
+    platforms: [
+      { name: 'AppsFlyer', icon: '', summary: 'Mobile attribution that connects media spend to installs and in-app value.', scope: ['SDK and partner configuration', 'Deep links and install referrers', 'In-app events, SKAN and postbacks'] },
+      { name: 'Adjust', icon: '', summary: 'Attribution and fraud-aware measurement for app growth teams.', scope: ['Tracker and campaign structure', 'SDK events and revenue mapping', 'Cohort, retention and partner validation'] },
+      { name: 'Branch', icon: '', summary: 'Deep linking and cross-platform journeys that make app acquisition measurable.', scope: ['Universal links and deferred deep links', 'Web-to-app attribution', 'Event mapping and QA across stores'] },
+      { name: 'Firebase App Distribution', icon: 'firebase', summary: 'A cleaner release feedback loop for validating instrumentation before production.', scope: ['Test-build event validation', 'Release-to-release measurement checks', 'QA handover between product and growth teams'] },
+    ],
+  },
+]
+
 const reasons: Reason[] = [
   { number: '01', title: 'Accuracy First', description: 'We focus on reliable data collection, validation and measurement quality.' },
   { number: '02', title: 'Solutions Built Around Your Business', description: 'No one-size-fits-all tracking setups. We design measurement solutions around your website, platforms and business goals.' },
@@ -214,8 +323,21 @@ function CtaBanner() {
   return <section className="section contact-section" id="contact"><div className="container contact-card"><div className="contact-orb contact-orb--one" aria-hidden="true" /><div className="contact-orb contact-orb--two" aria-hidden="true" /><SectionIntro eyebrow="Let’s talk" light /><h2>Stop guessing.<br /><em>Start measuring right.</em></h2><p>Your business deserves data you can trust. Let’s identify what’s not working, fix your tracking and build a measurement foundation that supports smarter decisions.</p><a className="button button--primary button--large" href="/contact/">Book your free consultation <ArrowUpRight /></a><div className="contact-footnote"><span>Prefer email?</span> <a href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz</a></div></div></section>
 }
 
+function BrandMark({ platform }: { platform: Platform }) {
+  const initials = platform.name.split(/\s+/).filter(Boolean).slice(0, 2).map((word) => word[0]).join('').toUpperCase()
+  return <div className="platform-brand"><div className="platform-logo"><span className="platform-initials">{initials}</span>{platform.icon && <img src={`/assets/brands/${platform.icon}.svg`} alt="" loading="lazy" onLoad={(event) => { const sibling = event.currentTarget.previousElementSibling as HTMLElement | null; if (sibling) sibling.style.display = 'none' }} onError={(event) => { event.currentTarget.style.display = 'none' }} />}</div><span>{platform.name}</span></div>
+}
+
+function CategoryGrid() {
+  return <div className="category-grid">{serviceCategories.map((category) => <article className="category-card" key={category.slug}><div className="category-card__top"><span>{category.number}</span><span>{category.platforms.length} platforms</span></div><h3>{category.title}</h3><p>{category.description}</p><div className="category-brand-row">{category.platforms.slice(0, 4).map((platform) => <BrandMark platform={platform} key={platform.name} />)}</div><a className="service-learn-more" href={`/services/${category.slug}/`}>Explore {category.title} <ArrowUpRight /></a></article>)}</div>
+}
+
+function CategoryPage({ category }: { category: ServiceCategory }) {
+  return <PageFrame><PageHero eyebrow={category.eyebrow} title={<>{category.title}<br /><em>implemented with intent.</em></>} description={category.description} /><section className="section category-detail-section"><div className="container"><div className="page-intro-row"><p>We work across the tools your team already uses. Each engagement starts with the business outcome, then connects platform configuration, data quality, consent and reporting into one usable system.</p><a className="text-link" href="/contact/">Talk through your stack <ArrowUpRight /></a></div><div className="platform-detail-grid">{category.platforms.map((platform) => <article className="platform-detail-card" key={platform.name}><BrandMark platform={platform} /><p>{platform.summary}</p><ul>{platform.scope.map((item) => <li key={item}><span>+</span>{item}</li>)}</ul><a className="text-link" href="/contact/">Learn more <ArrowUpRight /></a></article>)}</div></div></section><CtaBanner /></PageFrame>
+}
+
 function ServicesPage() {
-  return <PageFrame><PageHero eyebrow="What we do" title={<>Measurement that moves<br /><em>your business forward.</em></>} description="From the first GA4 event to a complete reporting framework, Fixify makes the full measurement stack clear, accurate and ready to scale." /><section className="section services-section services-page-section"><div className="container"><div className="page-intro-row"><p>Every engagement starts with the business question, then works backward to the cleanest and most useful data system. Explore the capabilities that make up the Fixify toolkit.</p><a className="text-link" href="/contact/">Talk through your setup <ArrowUpRight /></a></div><ServiceGrid /></div></section><CtaBanner /></PageFrame>
+  return <PageFrame><PageHero eyebrow="What we do" title={<>Measurement that moves<br /><em>your business forward.</em></>} description="From analytics and paid media to CDP, server-side signals, reporting, tag management, ecommerce and mobile, Fixify makes the full measurement stack clear, accurate and ready to scale." /><section className="section category-section"><div className="container"><div className="section-heading-row"><div><SectionIntro eyebrow="Explore by category" /><h2>One measurement partner.<br /><em>Every layer covered.</em></h2></div><p className="section-heading-note">Choose the part of your stack you need to make clearer. Each category has its own implementation scope, platform expertise and route to a useful next step.</p></div><CategoryGrid /></div></section><section className="section services-section services-page-section"><div className="container"><div className="section-heading-row"><div><SectionIntro eyebrow="All implementation services" /><h2>Built around your <em>stack.</em></h2></div><p className="section-heading-note">Explore the individual workstreams that sit inside the categories above. Every card has a dedicated anchor and a clear learn-more path.</p></div><ServiceGrid /></div></section><CtaBanner /></PageFrame>
 }
 
 function ApproachPage() {
@@ -261,6 +383,10 @@ function App() {
   const path = window.location.pathname.replace(/\/+$/, '') || '/'
   if (path === '/') return <HomePage />
   if (path === '/services') return <ServicesPage />
+  if (path.startsWith('/services/')) {
+    const category = serviceCategories.find((item) => `/services/${item.slug}` === path)
+    if (category) return <CategoryPage category={category} />
+  }
   if (path === '/approach') return <ApproachPage />
   if (path === '/about') return <AboutPage />
   if (path === '/contact') return <ContactPage />

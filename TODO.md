@@ -4,17 +4,21 @@
 
 - [x] **Responsive branded navigation and multi-page shell**
   - Uses the supplied Fixify logo in a transparent treatment and the supplied favicon in site metadata.
-  - Provides responsive navigation across `/`, `/services/`, `/approach/`, `/about/`, and `/contact/` with a prominent consultation action.
+  - Provides responsive navigation across the home, Services, Approach, About, and Contact pages.
   - Uses the supplied navy-and-gold identity with layered depth, dimensional cards, ambient orbits, a 3D measurement scene, and responsive layouts.
 
-- [x] **Conversion-focused home experience**
-  - Features “Tracking Made Right. Decisions Made Smarter.” and “Your Data. Your Growth. Our Fix.”
-  - Includes the supplied supporting copy, free-consultation CTAs, service discovery, problem narrative, trust reasons, process preview, audience list, and final conversion section.
-  - Explains the business impact of unreliable tracking, incomplete data, inconsistent reporting, wasted spend, and uncertain measurement.
+- [x] **Category-led Services architecture**
+  - The Services area now groups offerings into Analytics, Paid Media, CDP, Server-Side, Reporting, Tag Management, Ecommerce, App Tracking, and Mobile Tracking.
+  - Each category has its own static, crawlable route under `/services/`, its own route-specific metadata, and its own implementation details.
+  - Category detail cards cover the requested tools, including GA4, Amplitude, Mixpanel, Adobe, Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, Segment, RudderStack, mParticle, Tealium, platform CAPI/Events API options, Looker, Power BI, Tableau, BigQuery, GTM, Adobe Launch, Shopify, WordPress/WooCommerce, Wix, Magento/Adobe Commerce, Firebase, AppsFlyer, Adjust, and Branch.
+
+- [x] **Realistic, resilient platform branding**
+  - Uses verified local SVG brand assets from the Simple Icons library for available platform marks under `public/assets/brands`.
+  - Uses restrained initials as a graceful fallback for platforms without an appropriate reusable SVG rather than displaying broken remote images.
+  - Keeps the Fixify logo treatment separate from vendor platform marks.
 
 - [x] **Complete implementation services catalog**
-  - Includes 22 original Fixify offerings covering GA4, GTM, conversion tracking, attribution, server-side tracking, reporting, Web/App Conversions API, offline/CRM conversion flows, pixels, enhanced conversions, Google Tag Gateway, mobile SDK/MMP, app analytics, web-to-app attribution, TV/OTT, BI/data integration, consent/privacy, marketing automation, and experimentation/CRO.
-  - The `/services/` page provides a dedicated anchor and visible `Learn more` link for every offering while preserving the Fixify navy-and-gold visual system rather than copying the reference site.
+  - Includes the original 22 Fixify offerings with dedicated anchors and visible `Learn more` links below the category hub.
   - Crawlable HTML contains every service heading and description, with valid ItemList structured data.
 
 - [x] **Dedicated approach, about, and contact pages**
@@ -30,8 +34,7 @@
   - Blocked because Google Workspace connector access was explicitly declined in the session. The supplied Sheet cannot be inspected or written to until that connector is authorized.
 
 - [x] **SEO and device-ready deployment source**
-  - Each public route is a static HTML entrypoint with route-specific title, description, keywords, Open Graph metadata, Twitter metadata, JSON-LD, and meaningful no-JavaScript body content.
-  - Services metadata is tuned to practical title/description/keyword thresholds; the full catalog uses internal links and ItemList structured data.
+  - Every public category route is a static HTML entrypoint with route-specific title, description, keywords, Open Graph metadata, Twitter metadata, JSON-LD, and meaningful no-JavaScript body content.
   - `VITE_SITE_URL` enables absolute canonical tags, `og:url`, `og:image`, `sitemap.xml`, and a sitemap reference in `robots.txt`; `.env.example` documents the setting.
-  - Provides the working Vite build command, route manifest, Vercel configuration, transparent logo assets, favicon assets, and README deployment guidance.
-  - Verified with clean TypeScript/build checks, route HTTP checks, production asset checks, structured-data parsing, and desktop/mobile preview captures. Search rankings still depend on indexing, site authority, speed, competition, and ongoing content; no honest implementation can guarantee a top Google position.
+  - Provides the working Vite build command, route manifest, Vercel configuration, local brand assets, favicon assets, and README deployment guidance.
+  - Verified with clean TypeScript/build checks, category route HTTP checks, static output checks, browser hydration inspection, and desktop/mobile preview captures.

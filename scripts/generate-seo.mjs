@@ -3,7 +3,7 @@ import { join } from 'node:path'
 
 const root = new URL('../dist/', import.meta.url).pathname
 const siteUrl = (process.env.VITE_SITE_URL || process.env.SITE_URL || '').replace(/\/$/, '')
-const routes = ['/', '/services/', '/approach/', '/about/', '/contact/']
+const routes = ['/', '/services/', '/services/analytics/', '/services/paid-media/', '/services/cdp/', '/services/server-side/', '/services/reporting/', '/services/tag-management/', '/services/ecommerce/', '/services/app-tracking/', '/services/mobile-tracking/', '/approach/', '/about/', '/contact/']
 
 function htmlFiles(directory) {
   if (!existsSync(directory)) return []

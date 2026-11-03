@@ -4,9 +4,57 @@
   "framework": "vite",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/services", "destination": "/services/" },
-    { "source": "/approach", "destination": "/approach/" },
-    { "source": "/about", "destination": "/about/" },
-    { "source": "/contact", "destination": "/contact/" }
+    {
+      "source": "/services",
+      "destination": "/services/"
+    },
+    {
+      "source": "/services/analytics",
+      "destination": "/services/analytics/"
+    },
+    {
+      "source": "/services/paid-media",
+      "destination": "/services/paid-media/"
+    },
+    {
+      "source": "/services/cdp",
+      "destination": "/services/cdp/"
+    },
+    {
+      "source": "/services/server-side",
+      "destination": "/services/server-side/"
+    },
+    {
+      "source": "/services/reporting",
+      "destination": "/services/reporting/"
+    },
+    {
+      "source": "/services/tag-management",
+      "destination": "/services/tag-management/"
+    },
+    {
+      "source": "/services/ecommerce",
+      "destination": "/services/ecommerce/"
+    },
+    {
+      "source": "/services/app-tracking",
+      "destination": "/services/app-tracking/"
+    },
+    {
+      "source": "/services/mobile-tracking",
+      "destination": "/services/mobile-tracking/"
+    },
+    {
+      "source": "/approach",
+      "destination": "/approach/"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/"
+    }
   ]
 }
