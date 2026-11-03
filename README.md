@@ -25,4 +25,4 @@ The project builds each page as a static HTML entrypoint with route-specific tit
 
 ## Lead form
 
-The contact page includes validated name, work email, company, service, and context fields. Submission opens a pre-addressed, ready-to-send email to `hello@fixify.com`, so the static Vercel deployment does not require a private backend or API key. Replace that address with the final Fixify inbox before launch.
+The contact page includes validated name, work email, company, service, and context fields. Submission opens a pre-addressed, ready-to-send email to `admin@fixifydata.xyz`. The Google Workspace connector was not authorized in the session, so the supplied Google Sheet is not currently connected; enabling that connector is required before a secure Sheet-backed submission endpoint can be created.

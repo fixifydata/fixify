@@ -12,18 +12,18 @@
   - Includes the supplied supporting copy, free-consultation CTAs, service discovery, problem narrative, trust reasons, process preview, audience list, and final conversion section.
   - Explains the business impact of unreliable tracking, incomplete data, inconsistent reporting, wasted spend, and uncertain measurement.
 
-- [x] **Dedicated services page**
-  - Presents GA4 Implementation & Audits, Google Tag Manager, Conversion Tracking, Attribution & Marketing Measurement, Server-Side Tracking, and Analytics & Reporting on `/services/`.
-  - Preserves the supplied descriptions and service detail lists for every service, with anchored service sections.
+- [x] **Deepened implementation services content**
+  - Expands GA4, Google Tag Manager, conversion tracking, attribution, server-side tracking, and analytics/reporting into original Fixify-specific implementation scopes, QA details, integrations, governance, and outcomes.
+  - Includes deeper crawlable service content on `/services/` inspired by the reference service taxonomy without copying its wording.
 
-- [x] **Dedicated approach and about pages**
+- [x] **Dedicated approach, about, and contact pages**
   - `/approach/` explains Discover, Audit, Implement, Validate, and Optimise with expanded detail.
-  - `/about/` explains Accuracy First, Solutions Built Around Your Business, End-to-End Expertise, Clear Communication, and Built to Scale, plus the intended audience.
-
-- [x] **Validated contact and lead capture page**
+  - `/about/` explains Fixify’s principles and intended audience.
   - `/contact/` includes validated name, work email, company, service, and context fields.
-  - Submission opens a pre-addressed ready-to-send enquiry email to `hello@fixify.com` without requiring a private backend or API key.
-  - Includes a clear explanation of what happens next and a direct-email fallback.
+  - Submission opens a pre-addressed ready-to-send enquiry email to `admin@fixifydata.xyz`.
+
+- [ ] **Google Sheet lead storage**
+  - Blocked because Google Workspace connector access was explicitly declined in the session. The supplied Sheet cannot be inspected or written to until that connector is authorized.
 
 - [x] **SEO and deployment-ready source**
   - Each public route is a static HTML entrypoint with route-specific title, description, keywords, Open Graph metadata, Twitter metadata, JSON-LD, and meaningful no-JavaScript body content.

@@ -24,43 +24,43 @@ const services: Service[] = [
   {
     number: '01',
     title: 'GA4 Implementation & Audits',
-    description: 'Build a reliable analytics foundation with properly configured Google Analytics 4.',
-    details: ['GA4 setup and configuration', 'GA4 audits and troubleshooting', 'Event and conversion tracking', 'Custom dimensions and metrics', 'Enhanced measurement', 'Cross-domain tracking'],
+    description: 'Turn business questions into a governed GA4 property your marketing, sales and product teams can read the same way.',
+    details: ['Measurement plan, event taxonomy and naming rules', 'Lead-gen and ecommerce event architecture', 'Custom dimensions, metrics and audiences', 'CRM, Google Ads and warehouse connections', 'Backend-to-GA4 reconciliation and QA', 'Documentation your team can extend'],
     tag: 'Foundation',
   },
   {
     number: '02',
     title: 'Google Tag Manager',
-    description: 'Make your tracking implementation structured, scalable and reliable.',
-    details: ['GTM setup and configuration', 'Tag, trigger and variable implementation', 'Data layer planning and development guidance', 'Custom event tracking', 'Debugging and troubleshooting', 'GTM audits and cleanup'],
+    description: 'Create a tag-management system that is easier to debug, safer to release and ready for the next campaign or product change.',
+    details: ['Container architecture and workspace governance', 'Data layer requirements and developer guidance', 'Tags, triggers, variables and custom templates', 'Preview-mode debugging and release QA', 'Duplicate, stale and conflicting tag cleanup', 'Versioning, permissions and handover playbook'],
     tag: 'Infrastructure',
   },
   {
     number: '03',
     title: 'Conversion Tracking',
-    description: 'Understand what drives leads, sales and meaningful business outcomes.',
-    details: ['Google Ads conversion tracking', 'Meta Pixel and Conversions API', 'LinkedIn Insight Tag', 'Ecommerce tracking', 'Form and lead tracking', 'Cross-platform conversion measurement'],
+    description: 'Connect ad clicks to qualified leads, purchases and revenue with conversion definitions your growth team can trust.',
+    details: ['Google Ads enhanced conversions and value rules', 'Meta Pixel and server event coordination', 'LinkedIn, TikTok and other platform signals', 'Purchase, subscription and revenue parameters', 'Form, phone and CRM-qualified lead stages', 'Cross-platform deduplication and validation'],
     tag: 'Outcomes',
   },
   {
     number: '04',
     title: 'Attribution & Marketing Measurement',
-    description: 'Get a clearer picture of how your marketing channels contribute to growth.',
-    details: ['Marketing attribution setup', 'UTM strategy and governance', 'Campaign tracking audits', 'Channel performance measurement', 'Conversion journey analysis', 'Marketing measurement frameworks'],
+    description: 'Replace channel arguments with a measurement framework that explains how campaigns contribute across the customer journey.',
+    details: ['UTM standards, campaign taxonomy and governance', 'First-touch, last-touch and assisted journey views', 'Attribution-window and data-driven model review', 'Cross-domain and cross-device journey mapping', 'Spend, pipeline and revenue measurement', 'Executive KPI definitions and decision cadence'],
     tag: 'Clarity',
   },
   {
     number: '05',
     title: 'Server-Side Tracking',
-    description: 'Build a more robust measurement infrastructure with server-side solutions.',
-    details: ['Server-side GTM implementation', 'First-party tracking architecture', 'Conversion data quality improvements', 'Tracking diagnostics', 'Consent-aware measurement support'],
+    description: 'Move the right signal closer to the source with a server-side architecture that improves resilience, control and data quality.',
+    details: ['Server-side GTM container and hosting architecture', 'Browser-to-server event mapping and event IDs', 'First-party domain and cookie strategy', 'Hashing, enrichment and platform authentication', 'Browser/server deduplication and match-quality QA', 'Consent-aware routing and operational handover'],
     tag: 'Resilience',
   },
   {
     number: '06',
     title: 'Analytics & Reporting',
-    description: 'Turn complex data into insights your business can act on.',
-    details: ['Looker Studio dashboards', 'GA4 reporting and analysis', 'Marketing performance dashboards', 'Custom reporting solutions', 'Data quality monitoring', 'Actionable business insights'],
+    description: 'Give every audience the right view of performance, from daily operators to leadership deciding where to invest next.',
+    details: ['Looker Studio dashboards for channel and funnel teams', 'BigQuery-ready marketing data models', 'CRM, ad platform and offline-data integration', 'Metric definitions and source reconciliation', 'Anomaly alerts for spend, volume and conversion breaks', 'Decision-focused reporting and team enablement'],
     tag: 'Decisions',
   },
 ]
@@ -125,7 +125,7 @@ function Footer() {
         <div className="footer-brand"><img src="/assets/fixify-logo-transparent.png" alt="Fixify" className="footer-logo" /><p>Tracking made right.<br />Decisions made smarter.</p></div>
         <div className="footer-column"><span className="footer-label">Explore</span><a href="/services/">Services</a><a href="/approach/">Approach</a><a href="/about/">About Fixify</a><a href="/contact/">Contact</a></div>
         <div className="footer-column footer-column--wide"><span className="footer-label">Services</span><a href="/services/#ga4">GA4 implementation & audits</a><a href="/services/#gtm">Google Tag Manager</a><a href="/services/#conversion-tracking">Conversion tracking</a><a href="/services/#attribution">Attribution & measurement</a></div>
-        <div className="footer-column"><span className="footer-label">Start a conversation</span><a className="footer-email" href="mailto:hello@fixify.com">hello@fixify.com <ArrowUpRight /></a><span className="footer-location">Built for teams that care<br />about getting it right.</span></div>
+        <div className="footer-column"><span className="footer-label">Start a conversation</span><a className="footer-email" href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz <ArrowUpRight /></a><span className="footer-location">Built for teams that care<br />about getting it right.</span></div>
       </div>
       <div className="container footer-bottom"><span>© 2026 Fixify. All rights reserved.</span><span>Tracking made right <i /> Decisions made smarter</span></div>
     </footer>
@@ -231,7 +231,7 @@ function AudienceList() {
 }
 
 function CtaBanner() {
-  return <section className="section contact-section" id="contact"><div className="container contact-card"><div className="contact-orb contact-orb--one" aria-hidden="true" /><div className="contact-orb contact-orb--two" aria-hidden="true" /><SectionIntro eyebrow="Let’s talk" light /><h2>Stop guessing.<br /><em>Start measuring right.</em></h2><p>Your business deserves data you can trust. Let’s identify what’s not working, fix your tracking and build a measurement foundation that supports smarter decisions.</p><a className="button button--primary button--large" href="/contact/">Book your free consultation <ArrowUpRight /></a><div className="contact-footnote"><span>Prefer email?</span> <a href="mailto:hello@fixify.com">hello@fixify.com</a></div></div></section>
+  return <section className="section contact-section" id="contact"><div className="container contact-card"><div className="contact-orb contact-orb--one" aria-hidden="true" /><div className="contact-orb contact-orb--two" aria-hidden="true" /><SectionIntro eyebrow="Let’s talk" light /><h2>Stop guessing.<br /><em>Start measuring right.</em></h2><p>Your business deserves data you can trust. Let’s identify what’s not working, fix your tracking and build a measurement foundation that supports smarter decisions.</p><a className="button button--primary button--large" href="/contact/">Book your free consultation <ArrowUpRight /></a><div className="contact-footnote"><span>Prefer email?</span> <a href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz</a></div></div></section>
 }
 
 function ServicesPage() {
@@ -258,7 +258,7 @@ function LeadForm() {
     }
     const subject = encodeURIComponent(`Fixify consultation — ${values.company || values.name}`)
     const body = encodeURIComponent(`Name: ${values.name}\nEmail: ${values.email}\nCompany: ${values.company || 'Not provided'}\nInterested in: ${values.service || 'Not specified'}\n\nMessage:\n${values.message}`)
-    window.location.href = `mailto:hello@fixify.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:admin@fixifydata.xyz?subject=${subject}&body=${body}`
     setStatus('Your email client is ready with the enquiry details. Send the message to start the conversation.')
   }
 
@@ -266,7 +266,7 @@ function LeadForm() {
 }
 
 function ContactPage() {
-  return <PageFrame><PageHero eyebrow="Let’s talk" title={<>Stop guessing.<br /><em>Start measuring right.</em></>} description="Your business deserves data you can trust. Tell us where the setup is unclear and we’ll help you find the next right move." /><section className="section contact-page-section"><div className="container contact-page-grid"><LeadForm /><aside className="contact-aside"><div className="contact-aside-card"><SectionIntro eyebrow="What happens next" /><h3>A practical first conversation.</h3><p>We’ll understand the business question, look at the measurement context and explain the clearest path forward.</p><ol><li><span>01</span>We read your enquiry and context.</li><li><span>02</span>We come back with focused questions.</li><li><span>03</span>We outline the useful next step.</li></ol></div><div className="contact-aside-card contact-aside-card--dark"><SectionIntro eyebrow="Prefer email?" light /><a className="contact-aside-email" href="mailto:hello@fixify.com">hello@fixify.com <ArrowUpRight /></a><p>No forms, no fuss. Send a note directly if that’s easier.</p></div></aside></div></section></PageFrame>
+  return <PageFrame><PageHero eyebrow="Let’s talk" title={<>Stop guessing.<br /><em>Start measuring right.</em></>} description="Your business deserves data you can trust. Tell us where the setup is unclear and we’ll help you find the next right move." /><section className="section contact-page-section"><div className="container contact-page-grid"><LeadForm /><aside className="contact-aside"><div className="contact-aside-card"><SectionIntro eyebrow="What happens next" /><h3>A practical first conversation.</h3><p>We’ll understand the business question, look at the measurement context and explain the clearest path forward.</p><ol><li><span>01</span>We read your enquiry and context.</li><li><span>02</span>We come back with focused questions.</li><li><span>03</span>We outline the useful next step.</li></ol></div><div className="contact-aside-card contact-aside-card--dark"><SectionIntro eyebrow="Prefer email?" light /><a className="contact-aside-email" href="mailto:admin@fixifydata.xyz">admin@fixifydata.xyz <ArrowUpRight /></a><p>No forms, no fuss. Send a note directly if that’s easier.</p></div></aside></div></section></PageFrame>
 }
 
 function PageHero({ eyebrow, title, description }: { eyebrow: string; title: React.ReactNode; description: string }) {
