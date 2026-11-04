@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from '
 import { join } from 'node:path'
 
 const root = new URL('../dist/', import.meta.url).pathname
-const siteUrl = (process.env.VITE_SITE_URL || process.env.SITE_URL || '').replace(/\/$/, '')
+const siteUrl = (process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://fixifydata.xyz').replace(/\/$/, '')
 const serviceRoutes = ['ga4-implementation', 'ga4-audit', 'google-tag-manager', 'tracking-fix', 'consent-mode-cmp', 'server-side-tagging', 'crm-offline-conversions', 'measurement-strategy', 'ga4-bigquery-bi', 'measurement-qa-monitoring'].map((slug) => `/${slug}/`)
 const solutionRoutes = ['b2b-lead-generation', 'ecommerce', 'saas-subscription', 'agencies', 'multi-brand'].map((slug) => `/solutions/${slug}/`)
 const guideRoutes = ['ga4-implementation-guide', 'ga4-audit-checklist', 'google-tag-manager-audit-guide', 'how-to-fix-duplicate-ga4-conversions', 'why-ga4-and-google-ads-conversion-numbers-do-not-match', 'server-side-gtm-when-you-need-it', 'consent-mode-and-server-side-tagging', 'crm-offline-conversions-from-lead-to-revenue'].map((slug) => `/guides/${slug}/`)
