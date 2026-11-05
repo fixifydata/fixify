@@ -47,6 +47,16 @@
   ],
   "redirects": [
     {
+      "source": "/services/reporting/",
+      "destination": "/services/decide/",
+      "permanent": true
+    },
+    {
+      "source": "/services/analytics/",
+      "destination": "/services/measure/",
+      "permanent": true
+    },
+    {
       "source": "/services/analytics",
       "destination": "/services/measure/",
       "permanent": true
