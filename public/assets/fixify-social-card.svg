@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Fixify — Measurement you can trust</title>
+<desc id="desc">Website tracking, GA4 and conversion measurement specialists. We find out why the numbers do not match and fix it.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07183f"/><stop offset="1" stop-color="#102e63"/></linearGradient><radialGradient id="glow"><stop stop-color="#ffb020" stop-opacity=".25"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/><circle cx="1020" cy="110" r="310" fill="url(#glow)"/><path d="M0 520 1200 260M0 590 1200 330" stroke="#fff" stroke-opacity=".045"/>
+<g transform="translate(92 84)"><rect width="58" height="58" rx="14" fill="#ffb020"/><path d="M17 40V18h23v7H25v15zM31 29h14v7H31z" fill="#07183f"/><text x="76" y="43" font-family="Arial,sans-serif" font-size="40" font-weight="700" fill="#fff">Fixify</text></g>
+<text x="92" y="250" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="4" fill="#ffb020">WEBSITE TRACKING · GA4 · MEASUREMENT</text>
+<text x="92" y="335" font-family="Arial,sans-serif" font-size="62" font-weight="700" fill="#fff">Your data says one thing.</text>
+<text x="92" y="410" font-family="Arial,sans-serif" font-size="62" font-weight="700" fill="#fff">Your business says another.</text>
+<text x="92" y="480" font-family="Arial,sans-serif" font-size="28" fill="#d9e3f5">We find out why and fix it.</text>
+<rect x="92" y="536" width="244" height="5" rx="2" fill="#ffb020"/>
+</svg>
