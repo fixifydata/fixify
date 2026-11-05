@@ -24,28 +24,12 @@ if (siteUrl) {
     const relative = file.slice(root.length).replace(/index\.html$/, '')
     const path = relative ? `/${relative}` : '/'
     const canonical = `${siteUrl}${path}`
-        const pageTitle = html.match(/<title>(.*?)<\\/title>/i)?.[1] || 'Fixify | Website Tracking & Analytics'
-    const pageDescription = html.match(/<meta\\s+name="description"\\s+content="([^"]*)"/i)?.[1] || 'Fixify audits, fixes and builds website tracking you can trust.'
-    html = html.replace(/<link\\s+rel="canonical"[^>]*>/ig, '')
-    html = html.replace(/<meta\\s+(?:property="og:[^"]+"|name="twitter:[^"]+")[^>]*>/ig, '')
-    const socialTags = [
-      '<link rel="canonical" href="' + canonical + '" />',
-      '<meta property="og:url" content="' + canonical + '" />',
-      '<meta property="og:type" content="website" />',
-      '<meta property="og:title" content="' + pageTitle + '" />',
-      '<meta property="og:description" content="' + pageDescription + '" />',
-      '<meta property="og:image" content="' + socialImageUrl + '" />',
-      '<meta name="twitter:card" content="summary_large_image" />',
-      '<meta name="twitter:title" content="' + pageTitle + '" />',
-      '<meta name="twitter:description" content="' + pageDescription + '" />',
-      '<meta name="twitter:image" content="' + socialImageUrl + '" />',
-    ].join('\\n    ')
-    const titleMatch = html.match(new RegExp('<title>(.*?)</title>', 'i'))
-    const descriptionMatch = html.match(new RegExp('<meta name="description" content="([^"]*)"', 'i'))
+    const titleMatch = html.match(/<title>(.*?)<\/title>/i)
+    const descriptionMatch = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)
     const pageTitle = titleMatch?.[1] || 'Fixify | Website Tracking & Analytics'
     const pageDescription = descriptionMatch?.[1] || 'Fixify audits, fixes and builds website tracking you can trust.'
-    html = html.replace(new RegExp('<link rel="canonical"[^>]*>', 'ig'), '')
-    html = html.replace(new RegExp('<meta[^>]+(?:og:|twitter:)[^>]*>', 'ig'), '')
+    html = html.replace(/<link\s+rel="canonical"[^>]*>/ig, '')
+    html = html.replace(/<meta\s+(?:property="og:[^"]+"|name="twitter:[^"]+")[^>]*>/ig, '')
     const socialTags = [
       '<link rel="canonical" href="' + canonical + '" />',
       '<meta property="og:url" content="' + canonical + '" />',
