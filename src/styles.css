@@ -862,3 +862,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .quick-form-success p{color:#53637b;margin:8px 0 0}
 @media(max-width:900px){.engagement-grid{grid-template-columns:1fr}.engagement-card p{min-height:0}}
 @media(max-width:640px){.quick-contact-form{grid-template-columns:1fr;padding:20px}.quick-contact-form label:nth-of-type(3),.quick-contact-form .quick-consent{grid-column:auto}.quick-contact-form .button{justify-self:stretch;width:100%}}
+
+.service-engagement{background:#f4f6fa;border:1px solid #e3e7ef;border-radius:12px;display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr));margin:14px 0 24px;padding:18px}
+.service-engagement div{display:grid;gap:6px}
+.service-engagement span{color:#738096;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.service-engagement strong{color:#07183f;font-size:.88rem;line-height:1.55}
+@media(max-width:640px){.service-engagement{grid-template-columns:1fr}}
