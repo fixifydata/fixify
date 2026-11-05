@@ -151,3 +151,23 @@ for (const p of pillarPages) {
   {'@context':'https://schema.org','@type':'FAQPage',mainEntity:p.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}
  ]}));
 }
+
+
+/* Pricing and policy routes are emitted as crawlable HTML as well as React routes. */
+const pricingBody = '<h1>Clear engagement options and a scoped quote before work.</h1>' +
+  '<p>Project cost depends on platforms, journeys, integrations and validation required. Fixify confirms scope and fee before implementation begins.</p>' +
+  '<h2>Tracking Fix</h2><p>One clearly defined problem. Typically 3–7 working days. Fixed fee after diagnosis.</p><p><a href="/tracking-fix/">Explore Tracking Fix</a></p>' +
+  '<h2>GA4 Audit</h2><p>Severity-ranked findings and a prioritized fix plan. Typically 5–10 working days. Scoped quote after access review.</p><p><a href="/ga4-audit/">Explore GA4 Audit</a></p>' +
+  '<h2>Measurement Build</h2><p>GA4, GTM, consent, server-side and reporting. Typically 3–8 weeks. Custom scope after diagnostic.</p><p><a href="/contact/?type=build">Describe a measurement build</a></p>' +
+  '<p><a href="/contact/">Describe your tracking problem</a></p>';
+writePage('pricing', shell({title:'Pricing and Engagement Options | Fixify',description:'Compare Fixify tracking fixes, GA4 audits and measurement builds, including typical timelines and how project pricing is scoped.',path:'/pricing/',body:pricingBody,keywords:'analytics consulting pricing, GA4 audit pricing, tracking implementation, Fixify'}));
+const policyBody = '<h1>Privacy and website terms information.</h1>' +
+  '<p>This interim policy page explains the limited purpose of the enquiry form. Fixify should complete and review the full legal policy before launch.</p>' +
+  '<h2>Enquiry information</h2><p>Details submitted through the contact form are used to respond to the request, assess the measurement problem and prepare a proposed scope. Do not send passwords, payment details or sensitive customer records.</p>' +
+  '<h2>Before publication</h2><p>Confirm the contracting legal entity, data controller details, retention period, processors, international transfers, contact address and applicable privacy rights with legal counsel.</p>';
+writePage('privacy-policy', shell({title:'Privacy Policy | Fixify',description:'How Fixify uses information submitted through its website enquiry form. This interim notice requires business and legal review before launch.',path:'/privacy-policy/',body:policyBody,keywords:'Fixify privacy policy'}));
+const termsBody = '<h1>Website terms information.</h1>' +
+  '<p>This interim page must be completed and approved by Fixify before launch. It is not a substitute for the business terms agreed for a specific project.</p>' +
+  '<h2>Website information</h2><p>Service descriptions and timelines are indicative. Each engagement is subject to a written scope, commercial terms, access requirements and acceptance criteria.</p>' +
+  '<h2>Before publication</h2><p>Confirm the legal entity, jurisdiction, limitation of liability, intellectual property, confidentiality, payment terms and dispute process with legal counsel.</p>';
+writePage('terms', shell({title:'Terms of Service | Fixify',description:'Website terms and service engagement information for Fixify. This interim notice requires legal review before publication.',path:'/terms/',body:termsBody,keywords:'Fixify terms of service'}));
