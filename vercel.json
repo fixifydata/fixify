@@ -4,15 +4,58 @@
   "framework": "vite",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/services", "destination": "/services/" },
-    { "source": "/approach", "destination": "/approach/" },
-    { "source": "/about", "destination": "/about/" },
-    { "source": "/contact", "destination": "/contact/" },
-    { "source": "/case-studies", "destination": "/case-studies/" },
-    { "source": "/guides", "destination": "/guides/" },
-    { "source": "/glossary", "destination": "/glossary/" },
-    { "source": "/solutions/:slug", "destination": "/solutions/:slug/" },
-    { "source": "/services/:slug", "destination": "/services/:slug/" },
-    { "source": "/:slug", "destination": "/:slug/" }
+    {
+      "source": "/services",
+      "destination": "/services/"
+    },
+    {
+      "source": "/approach",
+      "destination": "/approach/"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/"
+    },
+    {
+      "source": "/case-studies",
+      "destination": "/case-studies/"
+    },
+    {
+      "source": "/guides",
+      "destination": "/guides/"
+    },
+    {
+      "source": "/glossary",
+      "destination": "/glossary/"
+    },
+    {
+      "source": "/solutions/:slug",
+      "destination": "/solutions/:slug/"
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/services/:slug/"
+    },
+    {
+      "source": "/:slug",
+      "destination": "/:slug/"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "fixify-self.vercel.app"
+        }
+      ],
+      "destination": "https://fixifydata.xyz/:path*",
+      "permanent": true
+    }
   ]
 }
