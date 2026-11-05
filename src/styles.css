@@ -835,3 +835,30 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .mobile-contact-bar{display:none}
 @media(max-width:900px){.contact-form-layout{grid-template-columns:1fr}.pricing-grid{grid-template-columns:1fr}.pricing-card p{min-height:0}.pillar-services{grid-template-columns:1fr}}
 @media(max-width:640px){.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .button{justify-content:center;width:100%}.mismatch-card{padding:18px}.lead-form{padding:20px}.platform-options{grid-template-columns:1fr}.mobile-contact-bar{background:#07183f;bottom:0;display:flex;left:0;padding:10px 16px;position:fixed;right:0;z-index:40}.mobile-contact-bar a{background:#ffb020;border-radius:8px;color:#07183f;display:flex;font-size:.8rem;font-weight:800;justify-content:center;min-height:46px;padding:14px;text-align:center;width:100%}body{padding-bottom:68px}}
+
+
+.engagement-grid{display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px}
+.engagement-card{background:#fff;border:1px solid rgba(7,24,63,.12);border-radius:16px;display:flex;flex-direction:column;gap:17px;padding:26px}
+.engagement-kicker{color:#9b6500;font-size:.66rem;font-weight:800;letter-spacing:.14em}
+.engagement-card h3{color:#07183f;font:600 1.45rem 'Space Grotesk',sans-serif;margin:0}
+.engagement-card p{color:#59657c;font-size:.9rem;line-height:1.65;margin:0;min-height:84px}
+.engagement-meta{border-top:1px solid #e6e9ef;display:grid;gap:5px;padding-top:13px}
+.engagement-meta span{color:#758198;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.engagement-meta strong{color:#07183f;font-size:.9rem}
+.engagement-card .button{margin-top:auto}
+.home-quick-form-section{background:#f5f7fa}
+.quick-contact-form{background:#fff;border:1px solid rgba(7,24,63,.12);border-radius:18px;box-shadow:0 18px 45px rgba(7,24,63,.07);display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:26px;padding:26px}
+.quick-contact-form label{color:#07183f;display:grid;font-size:.8rem;font-weight:700;gap:8px}
+.quick-contact-form input:not([type=checkbox]),.quick-contact-form textarea{background:#fff;border:1px solid #cbd2df;border-radius:8px;color:#07183f;font:500 .94rem 'DM Sans',sans-serif;min-height:48px;padding:12px 14px;width:100%}
+.quick-contact-form textarea{min-height:96px;resize:vertical}
+.quick-contact-form input:focus,.quick-contact-form textarea:focus{border-color:#07183f;outline:3px solid rgba(255,158,10,.42);outline-offset:2px}
+.quick-contact-form label:nth-of-type(3){grid-column:1/-1}
+.quick-contact-form .quick-consent{align-items:center;display:flex;flex-direction:row;font-size:.72rem;grid-column:1/-1}
+.quick-contact-form .quick-consent input{accent-color:#07183f;height:18px;width:18px}
+.quick-contact-form .quick-consent a{color:#07183f;text-decoration:underline}
+.quick-contact-form .button{justify-self:start}
+.quick-form-success{background:#f4f8f6;border:1px solid #c6ded1;border-radius:14px;margin-top:24px;padding:22px}
+.quick-form-success strong{color:#17643a}
+.quick-form-success p{color:#53637b;margin:8px 0 0}
+@media(max-width:900px){.engagement-grid{grid-template-columns:1fr}.engagement-card p{min-height:0}}
+@media(max-width:640px){.quick-contact-form{grid-template-columns:1fr;padding:20px}.quick-contact-form label:nth-of-type(3),.quick-contact-form .quick-consent{grid-column:auto}.quick-contact-form .button{justify-self:stretch;width:100%}}
