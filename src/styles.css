@@ -868,3 +868,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .service-engagement span{color:#738096;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .service-engagement strong{color:#07183f;font-size:.88rem;line-height:1.55}
 @media(max-width:640px){.service-engagement{grid-template-columns:1fr}}
+
+.service-example-note,.plain-english-note{background:#f5f7fa;border-left:3px solid #ffb020;border-radius:0 8px 8px 0;color:#526079;font-size:.9rem;line-height:1.65;margin:12px 0 20px;padding:14px 16px}
+.service-example-note strong,.plain-english-note strong{color:#07183f}
