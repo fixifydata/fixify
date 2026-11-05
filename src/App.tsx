@@ -159,7 +159,89 @@ const serviceEngagements: Record<string,{timeline:string;pricing:string;requirem
  'ecommerce-tracking':{timeline:'Typically 2–4 weeks depending on storefront and checkout',pricing:'Scoped quote after storefront and order-flow review',requirements:'Provide storefront and checkout access, example orders/refunds, currency and tax rules, payment-provider domains and the source-of-truth order system.'}
 };
 
-function ServicePageView({ service }: { service: ServicePage }) { const engagement = serviceEngagements[service.slug] || { timeline: 'Agreed after the initial review', pricing: 'Scoped quote after diagnosis', requirements: 'Share the affected journey, current setup, expected behavior and the relevant platform access.' }; return <PageFrame><Hero eyebrow={service.eyebrow} title={<>{service.title}</>} description={service.description} /><section className="section service-detail-section"><div className="container service-detail-layout"><article><SectionIntro eyebrow="Why this matters" /><h2>{service.problem}</h2><p className="detail-intro">{service.intro}</p><h3>What Fixify delivers</h3><div className="detail-list">{service.deliverables.map((item) => <div key={item}><span>+</span>{item}</div>)}</div><h3>How the work happens</h3><div className="detail-process">{service.process.map((item, index) => <div key={item}><span>0{index + 1}</span><p>{item}</p></div>)}</div><h3>Timeline and pricing</h3><div className="service-engagement"><div><span>Typical timeline</span><strong>{engagement.timeline}</strong></div><div><span>Pricing signal</span><strong>{engagement.pricing}</strong></div></div><h3>What should be ready?</h3><p>{engagement.requirements}</p></article><aside className="detail-sidebar"><div className="sidebar-card"><span className="sidebar-label">Primary search intent</span><strong>{service.primaryKeyword}</strong><a className="button button--primary" href="/contact/">Describe your tracking problem <ArrowUpRight /></a></div><div className="sidebar-card"><span className="sidebar-label">Related services</span>{service.related.map((link) => <a className="sidebar-link" href={link.href} key={link.href}>{link.label}<ArrowUpRight /></a>)}</div></aside></div></section><section className="section faq-section"><div className="container"><SectionHeader eyebrow="Questions we hear" title={<>A clearer answer<br /><em>before you start.</em></>} /><div className="faq-list">{service.faq.map((item) => <details key={item.question}><summary>{item.question}<span>+</span></summary><p>{item.answer}</p></details>)}</div></div></section><CTA /></PageFrame> }
+
+const serviceFAQExtras: Record<string,{question:string;answer:string}[]> = {
+ 'ga4-implementation':[
+  {question:'Will the new event plan work with Google Ads?',answer:'We map the agreed key events and conversion definitions to the relevant advertising destinations and validate the hand-off.'},
+  {question:'Can you coordinate with our developers?',answer:'Yes. Data-layer requirements and acceptance criteria can be documented for your engineering team.'}
+ ],
+ 'ga4-audit':[
+  {question:'Do you compare GA4 with backend or CRM data?',answer:'Where suitable source records are available, we compare transaction, lead or revenue data and document why counts differ.'},
+  {question:'Can you implement the recommendations?',answer:'Yes. Remediation can be quoted as a separate scope after the findings are reviewed.'},
+  {question:'Is a GA4 audit the same as an automated health check?',answer:'No. The audit checks the implementation and the business journey, not only property warnings.'}
+ ],
+ 'google-tag-manager':[
+  {question:'Do you use workspaces and version history?',answer:'Yes. Agreed changes are organized and documented so the team can review releases and roll back where supported.'},
+  {question:'Can you work across multiple domains or containers?',answer:'Yes. We map ownership and shared event behavior across the containers in scope.'}
+ ],
+ 'tracking-fix':[
+  {question:'How do you validate that the issue is fixed?',answer:'We rerun the reproduction steps and agreed test cases, then compare the event output with the destination and source system.'},
+  {question:'Can you work with our developer or agency?',answer:'Yes. We can provide reproduction evidence, clear implementation notes and a developer hand-off.'},
+  {question:'What if the root cause is outside GTM?',answer:'We explain which system needs to change and agree a revised scope before work continues.'}
+ ],
+ 'consent-mode-cmp':[
+  {question:'What is Basic versus Advanced Consent Mode?',answer:'Basic Consent Mode blocks Google tags until consent is granted. Advanced Consent Mode can send limited cookieless signals when consent is denied. Your legal adviser should confirm the appropriate approach.'},
+  {question:'Which consent platforms can you support?',answer:'Common implementations include Cookiebot, Termly, Usercentrics and OneTrust, subject to your licence and site architecture.'},
+  {question:'Does technical implementation make the site legally compliant?',answer:'No. Fixify implements technical measurement behavior; your legal counsel must confirm the legal requirements.'}
+ ],
+ 'server-side-tagging':[
+  {question:'Will server-side tagging bypass browser consent?',answer:'No. Consent requirements still apply and the consent state must be passed through and respected by the server-side flow.'},
+  {question:'What ongoing costs should we expect?',answer:'Hosting, request volume, monitoring and maintenance create operating costs. We review these before recommending a design.'},
+  {question:'Can we keep our current browser tags?',answer:'Often yes. We define which events remain browser-side and which should also be sent server-side.'}
+ ],
+ 'crm-offline-conversions':[
+  {question:'What happens when a lead changes lifecycle stage?',answer:'We map the agreed CRM stage changes to conversion events and define how updates, delays and reversals are handled.'},
+  {question:'Can you preserve campaign and click identifiers?',answer:'We assess which identifiers can be captured, retained and used under your consent and data-handling requirements.'},
+  {question:'Can revenue be reconciled back to CRM records?',answer:'Yes, when the CRM has reliable opportunity and revenue fields that can be mapped to the conversion flow.'}
+ ],
+ 'measurement-strategy':[
+  {question:'Who should agree the measurement definitions?',answer:'Marketing, sales, product, analytics and engineering stakeholders should agree the business meaning and ownership of critical metrics.'},
+  {question:'Can the plan be implemented in phases?',answer:'Yes. We prioritize decision-critical events and integrations first, then sequence the remaining work.'},
+  {question:'Do you document data-layer requirements?',answer:'Yes. The specification can include event names, parameters, examples and developer acceptance criteria.'}
+ ],
+ 'ga4-bigquery-bi':[
+  {question:'Can dashboards combine GA4, CRM and payment data?',answer:'Yes, when the source systems expose appropriate exports, APIs or connectors and the necessary identifiers are available.'},
+  {question:'Which system is the source of truth for revenue?',answer:'We agree the authoritative source with your team—often commerce, billing or finance—and document how analytics attribution differs.'},
+  {question:'Do you provide metric definitions with the dashboard?',answer:'Yes. Definitions, refresh expectations and ownership should be documented alongside the reporting views.'}
+ ],
+ 'measurement-qa-monitoring':[
+  {question:'What happens when an alert fires?',answer:'The alert should identify the affected event or journey, include evidence where possible and route to a named owner with a response process.'},
+  {question:'Can you monitor consent and cross-domain behavior?',answer:'Yes. Checks can include key consent states, linker behavior and the selected critical journeys.'},
+  {question:'Does monitoring replace release testing?',answer:'No. Monitoring detects defined failures after release; it complements pre-release QA and regression testing.'}
+ ],
+ 'meta-capi-enhanced-conversions':[
+  {question:'What is event deduplication?',answer:'It lets an advertising platform recognize browser and server copies of the same conversion as one event, usually through a shared event identifier.'}
+ ],
+ 'crm-conversion-tracking':[
+  {question:'Which lifecycle stages should be sent to ad platforms?',answer:'That depends on your sales process. We agree a small set of meaningful qualified stages and the identifiers available to match them.'}
+ ],
+ 'ecommerce-tracking':[
+  {question:'Do you test checkout across payment-provider domains?',answer:'Yes. Payment hand-offs and returning sessions can be tested where the checkout flow and test environment allow it.'}
+ ]
+};
+const serviceExamples: Record<string,string> = {
+ 'tracking-fix':'Illustrative workflow: a purchase event is sent on both the confirmation-page load and a data-layer push. The duplicate trigger is isolated, the change is tested and the event is reconciled against backend test orders.',
+ 'ga4-audit':'Illustrative deliverable: a findings register groups issues by severity, shows screenshots or test evidence and separates immediate fixes from structural measurement changes.',
+ 'ga4-implementation':'Illustrative workflow: a lead journey is mapped from form completion through the analytics event and the downstream CRM record, with required parameters and conversion rules documented.',
+ 'google-tag-manager':'Illustrative workflow: tag ownership, trigger dependencies and naming are inventoried, then the agreed changes are previewed and regression-tested before publishing.',
+ 'consent-mode-cmp':'Illustrative workflow: default, granted, denied and partial-consent states are tested across the important journeys and domains, with the observed tag behavior recorded.',
+ 'server-side-tagging':'Illustrative workflow: a selected event is sent through the server container with consent state and a shared event identifier, then checked at each destination for delivery and deduplication.',
+ 'crm-offline-conversions':'Illustrative workflow: a form lead is matched to its CRM lifecycle stage and a qualified event is sent to a supported advertising destination, with source-to-platform counts reconciled.',
+ 'measurement-strategy':'Illustrative deliverable: a decision-led measurement plan connects each KPI to its business definition, event, properties, source system and owner.',
+ 'ga4-bigquery-bi':'Illustrative deliverable: a warehouse model documents the source of each KPI and reconciles analytics attribution with CRM or payment records before the dashboard is published.',
+ 'measurement-qa-monitoring':'Illustrative workflow: checks watch a selected critical event and alert its named owner when the expected volume or required parameters disappear.',
+ 'meta-capi-enhanced-conversions':'Illustrative workflow: browser and server purchase events share an event ID, consent is passed through and destination diagnostics are checked for duplicate delivery.',
+ 'crm-conversion-tracking':'Illustrative workflow: qualified lead and closed-won stages are mapped from CRM fields to supported offline conversion events, with matching constraints documented.',
+ 'ecommerce-tracking':'Illustrative workflow: product items, checkout steps, purchase values and refunds are tested against sample orders from the commerce platform.'
+};
+const servicePlainEnglish: Record<string,string> = {
+ 'google-tag-manager':'Data layer = a structured list of what happens on your site and the details tracking tools can read.',
+ 'ga4-implementation':'Event parameter = a detail attached to an event, such as currency, item ID or form type.',
+ 'meta-capi-enhanced-conversions':'CAPI = sending conversion information from a server to an advertising platform instead of relying only on a browser pixel.',
+ 'consent-mode-cmp':'Basic Consent Mode blocks Google tags until consent is granted; Advanced Consent Mode can send limited cookieless signals when consent is denied. Legal requirements should be confirmed with counsel.'
+};
+
+function ServicePageView({ service }: { service: ServicePage }) { const engagement = serviceEngagements[service.slug] || { timeline: 'Agreed after the initial review', pricing: 'Scoped quote after diagnosis', requirements: 'Share the affected journey, current setup, expected behavior and the relevant platform access.' }; const faqs = [...service.faq, ...(serviceFAQExtras[service.slug] || [])]; const example = serviceExamples[service.slug]; const glossaryLine = servicePlainEnglish[service.slug]; return <PageFrame><Hero eyebrow={service.eyebrow} title={<>{service.title}</>} description={service.description} /><section className="section service-detail-section"><div className="container service-detail-layout"><article><SectionIntro eyebrow="Why this matters" /><h2>{service.problem}</h2><p className="detail-intro">{service.intro}</p><h3>What Fixify delivers</h3><div className="detail-list">{service.deliverables.map((item) => <div key={item}><span>+</span>{item}</div>)}</div><h3>How the work happens</h3><div className="detail-process">{service.process.map((item, index) => <div key={item}><span>0{index + 1}</span><p>{item}</p></div>)}</div><h3>Example outcome</h3><p className="service-example-note"><strong>Illustrative workflow — not a client result.</strong> {example}</p>{glossaryLine && <p className="plain-english-note"><strong>Plain English:</strong> {glossaryLine}</p>}<h3>Timeline and pricing</h3><div className="service-engagement"><div><span>Typical timeline</span><strong>{engagement.timeline}</strong></div><div><span>Pricing signal</span><strong>{engagement.pricing}</strong></div></div><h3>What should be ready?</h3><p>{engagement.requirements}</p></article><aside className="detail-sidebar"><div className="sidebar-card"><span className="sidebar-label">Primary search intent</span><strong>{service.primaryKeyword}</strong><a className="button button--primary" href="/contact/">Describe your tracking problem <ArrowUpRight /></a></div><div className="sidebar-card"><span className="sidebar-label">Related services</span>{service.related.map((link) => <a className="sidebar-link" href={link.href} key={link.href}>{link.label}<ArrowUpRight /></a>)}</div></aside></div></section><section className="section faq-section"><div className="container"><SectionHeader eyebrow="Questions we hear" title={<>A clearer answer<br /><em>before you start.</em></>} /><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}<span>+</span></summary><p>{item.answer}</p></details>)}</div></div></section><CTA /></PageFrame> }
 
 function SolutionsPage({ solution }: { solution: Solution }) { return <PageFrame><Hero eyebrow={`Solutions / ${solution.title}`} title={<>{solution.title}<br /><em>with the right measurement model.</em></>} description={solution.description} /><section className="section solution-section"><div className="container solution-layout"><article><SectionIntro eyebrow="The business problem" /><h2>{solution.problem}</h2><h3>Relevant event model</h3><p>{solution.eventModel}</p><h3>Typical integrations</h3><div className="detail-list">{solution.integrations.map((item) => <div key={item}><span>+</span>{item}</div>)}</div><h3>What you keep</h3><div className="detail-list">{solution.deliverables.map((item) => <div key={item}><span>+</span>{item}</div>)}</div></article><aside className="detail-sidebar"><div className="sidebar-card"><span className="sidebar-label">Next step</span><strong>{solution.cta}</strong><a className="button button--primary" href="/contact/">Describe your tracking problem <ArrowUpRight /></a></div><div className="sidebar-card"><span className="sidebar-label">Related pillars</span>{pillars.slice(0, 3).map((pillar) => <a className="sidebar-link" href="/services/" key={pillar.slug}>{pillar.title}<ArrowUpRight /></a>)}</div></aside></div></section><CTA primary={solution.cta} secondary="See our approach" /></PageFrame> }
 
