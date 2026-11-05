@@ -1,4 +1,4 @@
-type Request = { method?: string; body?: Record<string, unknown> | string };
+type Request = { method?: string; body?: Record<string, unknown> | string; headers?: Record<string, string | string[] | undefined> };
 type Response = { status: (code: number) => Response; json: (body: Record<string, unknown>) => void; setHeader: (name: string, value: string) => void };
 
 const safeText = (value: unknown, max = 4000) => String(value ?? "").trim().slice(0, max);
@@ -11,8 +11,21 @@ export default async function handler(req: Request, res: Response) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed." });
 
   let body: Record<string, unknown> = {};
+  const contentType = String(req.headers?.["content-type"] ?? "");
   try {
-    body = typeof req.body === "string" ? JSON.parse(req.body) : (req.body ?? {});
+    if (typeof req.body === "string" && contentType.includes("application/x-www-form-urlencoded")) {
+      const params = new URLSearchParams(req.body);
+      for (const [key, value] of params.entries()) {
+        if (Object.prototype.hasOwnProperty.call(body, key)) {
+          const existing = body[key];
+          body[key] = Array.isArray(existing) ? [...existing, value] : [existing, value];
+        } else {
+          body[key] = value;
+        }
+      }
+    } else {
+      body = typeof req.body === "string" ? JSON.parse(req.body) : (req.body ?? {});
+    }
   } catch {
     return res.status(400).json({ error: "Invalid request body." });
   }
@@ -80,6 +93,11 @@ export default async function handler(req: Request, res: Response) {
       const detail = await delivery.text().catch(() => "");
       console.error("Resend delivery failed", delivery.status, detail.slice(0, 500));
       return res.status(502).json({ error: "The email service could not deliver the request. Please email hello@fixifydata.xyz." });
+    }
+    const acceptsHtml = String(req.headers?.accept ?? "").includes("text/html");
+    if (acceptsHtml) {
+      res.setHeader("Location", "/thank-you/");
+      return res.status(303).json({ ok: true });
     }
     return res.status(200).json({ ok: true });
   } catch (error) {
