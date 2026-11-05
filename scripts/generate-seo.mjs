@@ -3,11 +3,11 @@ import { join } from 'node:path'
 
 const root = new URL('../dist/', import.meta.url).pathname
 const siteUrl = (process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://fixifydata.xyz').replace(/\/$/, '')
-const serviceRoutes = ['ga4-implementation', 'ga4-audit', 'google-tag-manager', 'tracking-fix', 'consent-mode-cmp', 'server-side-tagging', 'crm-offline-conversions', 'measurement-strategy', 'ga4-bigquery-bi', 'measurement-qa-monitoring'].map((slug) => `/${slug}/`)
+const serviceRoutes = ['ga4-implementation', 'ga4-audit', 'google-tag-manager', 'tracking-fix', 'consent-mode-cmp', 'server-side-tagging', 'crm-offline-conversions', 'measurement-strategy', 'ga4-bigquery-bi', 'measurement-qa-monitoring', 'meta-capi-enhanced-conversions', 'crm-conversion-tracking', 'ecommerce-tracking'].map((slug) => `/${slug}/`)
 const solutionRoutes = ['b2b-lead-generation', 'ecommerce', 'saas-subscription', 'agencies', 'multi-brand'].map((slug) => `/solutions/${slug}/`)
 const guideRoutes = ['ga4-implementation-guide', 'ga4-audit-checklist', 'google-tag-manager-audit-guide', 'how-to-fix-duplicate-ga4-conversions', 'why-ga4-and-google-ads-conversion-numbers-do-not-match', 'server-side-gtm-when-you-need-it', 'consent-mode-and-server-side-tagging', 'crm-offline-conversions-from-lead-to-revenue'].map((slug) => `/guides/${slug}/`)
 const glossaryRoutes = ['what-is-a-gclid', 'what-is-a-datalayer', 'what-is-a-consent-signal', 'what-is-a-server-container', 'what-is-event-deduplication', 'what-is-measurement-protocol', 'what-is-a-crm-lifecycle-stage', 'what-is-an-event-parameter-in-ga4'].map((slug) => `/glossary/${slug}/`)
-const routes = ['/', '/services/', '/approach/', '/about/', '/contact/', '/case-studies/', '/guides/', '/glossary/', ...serviceRoutes, ...solutionRoutes, ...guideRoutes, ...glossaryRoutes, '/services/analytics/', '/services/paid-media/', '/services/cdp/', '/services/server-side/', '/services/reporting/', '/services/tag-management/', '/services/ecommerce/', '/services/app-tracking/', '/services/mobile-tracking/']
+const routes = ['/', '/services/', '/services/measure/', '/services/govern/', '/services/protect/', '/services/connect/', '/services/decide/', '/approach/', '/about/', '/contact/', '/pricing/', '/privacy-policy/', '/terms/', '/thank-you/', '/case-studies/', '/guides/', '/glossary/', ...serviceRoutes, ...solutionRoutes, ...guideRoutes, ...glossaryRoutes, '/services/paid-media/', '/services/cdp/', '/services/server-side/', '/services/tag-management/', '/services/ecommerce/', '/services/app-tracking/', '/services/mobile-tracking/']
 
 function htmlFiles(directory) {
   if (!existsSync(directory)) return []
@@ -18,13 +18,31 @@ function htmlFiles(directory) {
 }
 
 if (siteUrl) {
-  const logoUrl = `${siteUrl}/assets/fixify-logo-transparent.png`
+  const socialImageUrl = `${siteUrl}/assets/fixify-social-card.svg`
   for (const file of htmlFiles(root)) {
     let html = readFileSync(file, 'utf8')
     const relative = file.slice(root.length).replace(/index\.html$/, '')
     const path = relative ? `/${relative}` : '/'
     const canonical = `${siteUrl}${path}`
-    html = html.replace('</head>', `    <link rel="canonical" href="${canonical}" />\n    <meta property="og:url" content="${canonical}" />\n    <meta property="og:image" content="${logoUrl}" />\n  </head>`)
+    const titleMatch = html.match(/<title>(.*?)<\/title>/i)
+    const descriptionMatch = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)
+    const pageTitle = titleMatch?.[1] || 'Fixify | Website Tracking & Analytics'
+    const pageDescription = descriptionMatch?.[1] || 'Fixify audits, fixes and builds website tracking you can trust.'
+    html = html.replace(/<link\s+rel="canonical"[^>]*>/ig, '')
+    html = html.replace(/<meta\s+(?:property="og:[^"]+"|name="twitter:[^"]+")[^>]*>/ig, '')
+    const socialTags = [
+      '<link rel="canonical" href="' + canonical + '" />',
+      '<meta property="og:url" content="' + canonical + '" />',
+      '<meta property="og:type" content="website" />',
+      '<meta property="og:title" content="' + pageTitle + '" />',
+      '<meta property="og:description" content="' + pageDescription + '" />',
+      '<meta property="og:image" content="' + socialImageUrl + '" />',
+      '<meta name="twitter:card" content="summary_large_image" />',
+      '<meta name="twitter:title" content="' + pageTitle + '" />',
+      '<meta name="twitter:description" content="' + pageDescription + '" />',
+      '<meta name="twitter:image" content="' + socialImageUrl + '" />',
+    ].join('\n    ')
+    html = html.replace('</head>', '    ' + socialTags + '\n  </head>')
     writeFileSync(file, html)
   }
   const urlEntries = routes.map((route) => `  <url><loc>${siteUrl}${route}</loc><changefreq>monthly</changefreq><priority>${route === '/' ? '1.0' : '0.8'}</priority></url>`).join('\n')
