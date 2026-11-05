@@ -171,3 +171,6 @@ const termsBody = '<h1>Website terms information.</h1>' +
   '<h2>Website information</h2><p>Service descriptions and timelines are indicative. Each engagement is subject to a written scope, commercial terms, access requirements and acceptance criteria.</p>' +
   '<h2>Before publication</h2><p>Confirm the legal entity, jurisdiction, limitation of liability, intellectual property, confidentiality, payment terms and dispute process with legal counsel.</p>';
 writePage('terms', shell({title:'Terms of Service | Fixify',description:'Website terms and service engagement information for Fixify. This interim notice requires legal review before publication.',path:'/terms/',body:termsBody,keywords:'Fixify terms of service'}));
+
+const thankYouBody = '<h1>Thanks for getting in touch.</h1><p>Your tracking problem has been sent to Fixify. We will review the details and reply using the work email you provided.</p><h2>Useful next reads</h2><ul><li><a href="/guides/">Measurement guides and practical tracking notes</a></li><li><a href="/glossary/">Analytics and tracking glossary</a></li></ul>';
+writePage('thank-you', shell({title:'Thank You | Fixify',description:'Your enquiry has been received by Fixify.',path:'/thank-you/',body:thankYouBody,keywords:'Fixify enquiry confirmation'}));
