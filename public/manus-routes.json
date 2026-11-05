@@ -191,6 +191,17 @@
     {
       "path": "/glossary/what-is-a-crm-lifecycle-stage/",
       "title": "What Is A Crm Lifecycle Stage"
-    }
+    },
+    "/pricing/",
+    "/privacy-policy/",
+    "/terms/",
+    "/services/measure/",
+    "/services/govern/",
+    "/services/protect/",
+    "/services/connect/",
+    "/services/decide/",
+    "/meta-capi-enhanced-conversions/",
+    "/crm-conversion-tracking/",
+    "/ecommerce-tracking/"
   ]
 }
